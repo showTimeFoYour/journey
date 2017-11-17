@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.journey.abc.dao.TbTravelogueCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.journey.abc.pojo.po.TbTravelogueComment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="travel_id" property="travelId" jdbcType="BIGINT" />
+    <result column="create" property="create" jdbcType="TIMESTAMP" />
+    <result column="update" property="update" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.journey.abc.pojo.po.TbTravelogueComment" extends="BaseResultMap" >
+    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, travel_id, create, update
+  </sql>
+  <sql id="Blob_Column_List" >
+    desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.journey.abc.pojo.po.TbTravelogueCommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_travelogue_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbTravelogueCommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_travelogue_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_travelogue_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_travelogue_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.journey.abc.pojo.po.TbTravelogueCommentExample" >
+    delete from tb_travelogue_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
+    insert into tb_travelogue_comment (id, travel_id, create, 
+      update, desc)
+    values (#{id,jdbcType=BIGINT}, #{travelId,jdbcType=BIGINT}, #{create,jdbcType=TIMESTAMP}, 
+      #{update,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
+    insert into tb_travelogue_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="travelId != null" >
+        travel_id,
+      </if>
+      <if test="create != null" >
+        create,
+      </if>
+      <if test="update != null" >
+        update,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="travelId != null" >
+        #{travelId,jdbcType=BIGINT},
+      </if>
+      <if test="create != null" >
+        #{create,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null" >
+        #{update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.journey.abc.pojo.po.TbTravelogueCommentExample" resultType="java.lang.Integer" >
+    select count(*) from tb_travelogue_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_travelogue_comment
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.travelId != null" >
+        travel_id = #{record.travelId,jdbcType=BIGINT},
+      </if>
+      <if test="record.create != null" >
+        create = #{record.create,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update != null" >
+        update = #{record.update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.desc != null" >
+        desc = #{record.desc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_travelogue_comment
+    set id = #{record.id,jdbcType=BIGINT},
+      travel_id = #{record.travelId,jdbcType=BIGINT},
+      create = #{record.create,jdbcType=TIMESTAMP},
+      update = #{record.update,jdbcType=TIMESTAMP},
+      desc = #{record.desc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_travelogue_comment
+    set id = #{record.id,jdbcType=BIGINT},
+      travel_id = #{record.travelId,jdbcType=BIGINT},
+      create = #{record.create,jdbcType=TIMESTAMP},
+      update = #{record.update,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
+    update tb_travelogue_comment
+    <set >
+      <if test="travelId != null" >
+        travel_id = #{travelId,jdbcType=BIGINT},
+      </if>
+      <if test="create != null" >
+        create = #{create,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null" >
+        update = #{update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
+    update tb_travelogue_comment
+    set travel_id = #{travelId,jdbcType=BIGINT},
+      create = #{create,jdbcType=TIMESTAMP},
+      update = #{update,jdbcType=TIMESTAMP},
+      desc = #{desc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
+    update tb_travelogue_comment
+    set travel_id = #{travelId,jdbcType=BIGINT},
+      create = #{create,jdbcType=TIMESTAMP},
+      update = #{update,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

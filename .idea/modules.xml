@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/journey-common/journey-common.iml" filepath="$PROJECT_DIR$/journey-common/journey-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-dao/journey-manager-dao.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-dao/journey-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-interface/journey-manager-interface.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-interface/journey-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-pojo/journey-manager-pojo.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-pojo/journey-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-service/journey-manager-service.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-service/journey-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-web/journey-manager-web.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-web/journey-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-parent/journey-parent.iml" filepath="$PROJECT_DIR$/journey-parent/journey-parent.iml" />
+    </modules>
+  </component>
+</project>

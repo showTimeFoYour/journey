@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="journey-manager-web:war">
+    <output-path>$PROJECT_DIR$/journey-manager/journey-manager-web/target</output-path>
+    <root id="archive" name="journey-manager-web.war">
+      <element id="artifact" artifact-name="journey-manager-web:war exploded" />
+    </root>
+  </artifact>
+</component>

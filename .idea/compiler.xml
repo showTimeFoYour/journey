@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="journey-common" />
+        <module name="journey-manager-dao" />
+        <module name="journey-manager-interface" />
+        <module name="journey-manager-pojo" />
+        <module name="journey-manager-service" />
+        <module name="journey-manager-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="journey-common" target="1.8" />
+      <module name="journey-dao" target="1.8" />
+      <module name="journey-manager" target="1.8" />
+      <module name="journey-manager-dao" target="1.8" />
+      <module name="journey-manager-interface" target="1.8" />
+      <module name="journey-manager-pojo" target="1.8" />
+      <module name="journey-manager-service" target="1.8" />
+      <module name="journey-manager-web" target="1.8" />
+      <module name="journey-parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
