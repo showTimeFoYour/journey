@@ -20,6 +20,7 @@
         <module>journey-manager-interface</module>
         <module>journey-manager-service</module>
         <module>journey-manager-web</module>
+        
     </modules>
 
     <dependencies>
