@@ -3,14 +3,14 @@ package com.journey.abc.pojo.po;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TbCityExample {
+public class TbCommentStatusExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TbCityExample() {
+    public TbCommentStatusExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,73 +164,123 @@ public class TbCityExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andCommentIdIsNull() {
+            addCriterion("comment_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andCommentIdIsNotNull() {
+            addCriterion("comment_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andCommentIdEqualTo(Long value) {
+            addCriterion("comment_id =", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andCommentIdNotEqualTo(Long value) {
+            addCriterion("comment_id <>", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andCommentIdGreaterThan(Long value) {
+            addCriterion("comment_id >", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andCommentIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("comment_id >=", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andCommentIdLessThan(Long value) {
+            addCriterion("comment_id <", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andCommentIdLessThanOrEqualTo(Long value) {
+            addCriterion("comment_id <=", value, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andCommentIdIn(List<Long> values) {
+            addCriterion("comment_id in", values, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andCommentIdNotIn(List<Long> values) {
+            addCriterion("comment_id not in", values, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andCommentIdBetween(Long value1, Long value2) {
+            addCriterion("comment_id between", value1, value2, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andCommentIdNotBetween(Long value1, Long value2) {
+            addCriterion("comment_id not between", value1, value2, "commentId");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andCommentStatusIsNull() {
+            addCriterion("comment_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andCommentStatusIsNotNull() {
+            addCriterion("comment_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusEqualTo(Integer value) {
+            addCriterion("comment_status =", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotEqualTo(Integer value) {
+            addCriterion("comment_status <>", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusGreaterThan(Integer value) {
+            addCriterion("comment_status >", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("comment_status >=", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusLessThan(Integer value) {
+            addCriterion("comment_status <", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("comment_status <=", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusIn(List<Integer> values) {
+            addCriterion("comment_status in", values, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotIn(List<Integer> values) {
+            addCriterion("comment_status not in", values, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusBetween(Integer value1, Integer value2) {
+            addCriterion("comment_status between", value1, value2, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("comment_status not between", value1, value2, "commentStatus");
             return (Criteria) this;
         }
     }

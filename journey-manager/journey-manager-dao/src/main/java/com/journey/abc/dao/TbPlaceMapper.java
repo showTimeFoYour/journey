@@ -16,15 +16,21 @@ public interface TbPlaceMapper {
 
     int insertSelective(TbPlace record);
 
+    List<TbPlace> selectByExampleWithBLOBs(TbPlaceExample example);
+
     List<TbPlace> selectByExample(TbPlaceExample example);
 
     TbPlace selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") TbPlace record, @Param("example") TbPlaceExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") TbPlace record, @Param("example") TbPlaceExample example);
+
     int updateByExample(@Param("record") TbPlace record, @Param("example") TbPlaceExample example);
 
     int updateByPrimaryKeySelective(TbPlace record);
+
+    int updateByPrimaryKeyWithBLOBs(TbPlace record);
 
     int updateByPrimaryKey(TbPlace record);
 }

@@ -3,7 +3,7 @@ package com.journey.abc.pojo.po;
 import java.util.Date;
 
 public class TbItem {
-    private Integer id;
+    private Long id;
 
     private String title;
 
@@ -11,11 +11,7 @@ public class TbItem {
 
     private Integer num;
 
-    private Byte status;
-
-    private String name;
-
-    private String phone;
+    private Integer status;
 
     private Date start;
 
@@ -29,11 +25,15 @@ public class TbItem {
 
     private Long userId;
 
-    public Integer getId() {
+    private Date updated;
+
+    private String contectDesc;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,28 +61,12 @@ public class TbItem {
         this.num = num;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
     }
 
     public Date getStart() {
@@ -131,5 +115,21 @@ public class TbItem {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public String getContectDesc() {
+        return contectDesc;
+    }
+
+    public void setContectDesc(String contectDesc) {
+        this.contectDesc = contectDesc == null ? null : contectDesc.trim();
     }
 }

@@ -13,9 +13,11 @@ public class TbItemComments {
 
     private Date tripTime;
 
-    private Boolean apppraise;
+    private Byte tripState;
 
-    private String itemId;
+    private Integer appraise;
+
+    private Long itemId;
 
     private Date created;
 
@@ -61,20 +63,28 @@ public class TbItemComments {
         this.tripTime = tripTime;
     }
 
-    public Boolean getApppraise() {
-        return apppraise;
+    public Byte getTripState() {
+        return tripState;
     }
 
-    public void setApppraise(Boolean apppraise) {
-        this.apppraise = apppraise;
+    public void setTripState(Byte tripState) {
+        this.tripState = tripState;
     }
 
-    public String getItemId() {
+    public Integer getAppraise() {
+        return appraise;
+    }
+
+    public void setAppraise(Integer appraise) {
+        this.appraise = appraise;
+    }
+
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId == null ? null : itemId.trim();
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
     public Date getCreated() {

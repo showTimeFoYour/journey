@@ -5,13 +5,13 @@ public class TbHotel {
 
     private String name;
 
-    private Long cid;
+    private Long cityId;
 
     private String sellPiont;
 
     private String images;
 
-    private String price;
+    private Long price;
 
     private String param;
 
@@ -35,12 +35,12 @@ public class TbHotel {
         this.name = name == null ? null : name.trim();
     }
 
-    public Long getCid() {
-        return cid;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setCid(Long cid) {
-        this.cid = cid;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
     public String getSellPiont() {
@@ -59,12 +59,12 @@ public class TbHotel {
         this.images = images == null ? null : images.trim();
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price == null ? null : price.trim();
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public String getParam() {

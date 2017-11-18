@@ -8,8 +8,10 @@
     <result column="city_id" property="cityId" jdbcType="BIGINT" />
     <result column="sellpoint" property="sellpoint" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="BIGINT" />
-    <result column="param" property="param" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.journey.abc.pojo.po.TbPlace" extends="BaseResultMap" >
+    <result column="param" property="param" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,8 +72,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, image, city_id, sellpoint, price, param, status
+    id, name, image, city_id, sellpoint, price, status
   </sql>
+  <sql id="Blob_Column_List" >
+    param
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.journey.abc.pojo.po.TbPlaceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_place
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbPlaceExample" >
     select
     <if test="distinct" >
@@ -86,9 +107,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from tb_place
     where id = #{id,jdbcType=BIGINT}
   </select>
@@ -105,10 +128,10 @@
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbPlace" >
     insert into tb_place (id, name, image, 
       city_id, sellpoint, price, 
-      param, status)
+      status, param)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
       #{cityId,jdbcType=BIGINT}, #{sellpoint,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, 
-      #{param,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{param,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbPlace" >
     insert into tb_place
@@ -131,11 +154,11 @@
       <if test="price != null" >
         price,
       </if>
-      <if test="param != null" >
-        param,
-      </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="param != null" >
+        param,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -157,11 +180,11 @@
       <if test="price != null" >
         #{price,jdbcType=BIGINT},
       </if>
-      <if test="param != null" >
-        #{param,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="param != null" >
+        #{param,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -192,13 +215,27 @@
       <if test="record.price != null" >
         price = #{record.price,jdbcType=BIGINT},
       </if>
-      <if test="record.param != null" >
-        param = #{record.param,jdbcType=VARCHAR},
-      </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.param != null" >
+        param = #{record.param,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_place
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      city_id = #{record.cityId,jdbcType=BIGINT},
+      sellpoint = #{record.sellpoint,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=INTEGER},
+      param = #{record.param,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,7 +248,6 @@
       city_id = #{record.cityId,jdbcType=BIGINT},
       sellpoint = #{record.sellpoint,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=BIGINT},
-      param = #{record.param,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -235,13 +271,24 @@
       <if test="price != null" >
         price = #{price,jdbcType=BIGINT},
       </if>
-      <if test="param != null" >
-        param = #{param,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="param != null" >
+        param = #{param,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.journey.abc.pojo.po.TbPlace" >
+    update tb_place
+    set name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=BIGINT},
+      sellpoint = #{sellpoint,jdbcType=VARCHAR},
+      price = #{price,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      param = #{param,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbPlace" >
@@ -251,7 +298,6 @@
       city_id = #{cityId,jdbcType=BIGINT},
       sellpoint = #{sellpoint,jdbcType=VARCHAR},
       price = #{price,jdbcType=BIGINT},
-      param = #{param,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>

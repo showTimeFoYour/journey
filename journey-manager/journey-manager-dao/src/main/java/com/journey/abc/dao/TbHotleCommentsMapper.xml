@@ -7,7 +7,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="trip_state" property="tripState" jdbcType="BIT" />
-    <result column="appraise" property="appraise" jdbcType="BIT" />
+    <result column="appraise" property="appraise" jdbcType="INTEGER" />
     <result column="hotel_id" property="hotelId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
@@ -109,7 +109,7 @@
       hotel_id, created, updated
       )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{tripState,jdbcType=BIT}, #{appraise,jdbcType=BIT}, 
+      #{content,jdbcType=VARCHAR}, #{tripState,jdbcType=BIT}, #{appraise,jdbcType=INTEGER}, 
       #{hotelId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -161,7 +161,7 @@
         #{tripState,jdbcType=BIT},
       </if>
       <if test="appraise != null" >
-        #{appraise,jdbcType=BIT},
+        #{appraise,jdbcType=INTEGER},
       </if>
       <if test="hotelId != null" >
         #{hotelId,jdbcType=BIGINT},
@@ -199,7 +199,7 @@
         trip_state = #{record.tripState,jdbcType=BIT},
       </if>
       <if test="record.appraise != null" >
-        appraise = #{record.appraise,jdbcType=BIT},
+        appraise = #{record.appraise,jdbcType=INTEGER},
       </if>
       <if test="record.hotelId != null" >
         hotel_id = #{record.hotelId,jdbcType=BIGINT},
@@ -222,7 +222,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       trip_state = #{record.tripState,jdbcType=BIT},
-      appraise = #{record.appraise,jdbcType=BIT},
+      appraise = #{record.appraise,jdbcType=INTEGER},
       hotel_id = #{record.hotelId,jdbcType=BIGINT},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
@@ -246,7 +246,7 @@
         trip_state = #{tripState,jdbcType=BIT},
       </if>
       <if test="appraise != null" >
-        appraise = #{appraise,jdbcType=BIT},
+        appraise = #{appraise,jdbcType=INTEGER},
       </if>
       <if test="hotelId != null" >
         hotel_id = #{hotelId,jdbcType=BIGINT},
@@ -266,7 +266,7 @@
       title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       trip_state = #{tripState,jdbcType=BIT},
-      appraise = #{appraise,jdbcType=BIT},
+      appraise = #{appraise,jdbcType=INTEGER},
       hotel_id = #{hotelId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}

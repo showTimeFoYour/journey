@@ -9,7 +9,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="BIT" />
-    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
     <result column="isAdmin" property="isadmin" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -109,7 +109,7 @@
       gender, city_id, isAdmin)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
       #{realname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=BIT}, #{cityId,jdbcType=INTEGER}, #{isadmin,jdbcType=BIT})
+      #{gender,jdbcType=BIT}, #{cityId,jdbcType=BIGINT}, #{isadmin,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbUser" >
     insert into tb_user
@@ -165,7 +165,7 @@
         #{gender,jdbcType=BIT},
       </if>
       <if test="cityId != null" >
-        #{cityId,jdbcType=INTEGER},
+        #{cityId,jdbcType=BIGINT},
       </if>
       <if test="isadmin != null" >
         #{isadmin,jdbcType=BIT},
@@ -203,7 +203,7 @@
         gender = #{record.gender,jdbcType=BIT},
       </if>
       <if test="record.cityId != null" >
-        city_id = #{record.cityId,jdbcType=INTEGER},
+        city_id = #{record.cityId,jdbcType=BIGINT},
       </if>
       <if test="record.isadmin != null" >
         isAdmin = #{record.isadmin,jdbcType=BIT},
@@ -222,7 +222,7 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=BIT},
-      city_id = #{record.cityId,jdbcType=INTEGER},
+      city_id = #{record.cityId,jdbcType=BIGINT},
       isAdmin = #{record.isadmin,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -250,7 +250,7 @@
         gender = #{gender,jdbcType=BIT},
       </if>
       <if test="cityId != null" >
-        city_id = #{cityId,jdbcType=INTEGER},
+        city_id = #{cityId,jdbcType=BIGINT},
       </if>
       <if test="isadmin != null" >
         isAdmin = #{isadmin,jdbcType=BIT},
@@ -266,7 +266,7 @@
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=BIT},
-      city_id = #{cityId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=BIGINT},
       isAdmin = #{isadmin,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>

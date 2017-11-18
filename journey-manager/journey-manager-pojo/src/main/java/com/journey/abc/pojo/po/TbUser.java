@@ -15,7 +15,7 @@ public class TbUser {
 
     private Boolean gender;
 
-    private Integer cityId;
+    private Long cityId;
 
     private Boolean isadmin;
 
@@ -75,11 +75,11 @@ public class TbUser {
         this.gender = gender;
     }
 
-    public Integer getCityId() {
+    public Long getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(Long cityId) {
         this.cityId = cityId;
     }
 

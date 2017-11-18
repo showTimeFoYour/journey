@@ -13,9 +13,9 @@ public class TbPlace {
 
     private Long price;
 
-    private String param;
-
     private Integer status;
+
+    private String param;
 
     public Long getId() {
         return id;
@@ -65,19 +65,19 @@ public class TbPlace {
         this.price = price;
     }
 
-    public String getParam() {
-        return param;
-    }
-
-    public void setParam(String param) {
-        this.param = param == null ? null : param.trim();
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param == null ? null : param.trim();
     }
 }

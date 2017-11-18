@@ -425,63 +425,123 @@ public class TbItemCommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseIsNull() {
-            addCriterion("apppraise is null");
+        public Criteria andTripStateIsNull() {
+            addCriterion("trip_state is null");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseIsNotNull() {
-            addCriterion("apppraise is not null");
+        public Criteria andTripStateIsNotNull() {
+            addCriterion("trip_state is not null");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseEqualTo(Boolean value) {
-            addCriterion("apppraise =", value, "apppraise");
+        public Criteria andTripStateEqualTo(Byte value) {
+            addCriterion("trip_state =", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseNotEqualTo(Boolean value) {
-            addCriterion("apppraise <>", value, "apppraise");
+        public Criteria andTripStateNotEqualTo(Byte value) {
+            addCriterion("trip_state <>", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseGreaterThan(Boolean value) {
-            addCriterion("apppraise >", value, "apppraise");
+        public Criteria andTripStateGreaterThan(Byte value) {
+            addCriterion("trip_state >", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("apppraise >=", value, "apppraise");
+        public Criteria andTripStateGreaterThanOrEqualTo(Byte value) {
+            addCriterion("trip_state >=", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseLessThan(Boolean value) {
-            addCriterion("apppraise <", value, "apppraise");
+        public Criteria andTripStateLessThan(Byte value) {
+            addCriterion("trip_state <", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseLessThanOrEqualTo(Boolean value) {
-            addCriterion("apppraise <=", value, "apppraise");
+        public Criteria andTripStateLessThanOrEqualTo(Byte value) {
+            addCriterion("trip_state <=", value, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseIn(List<Boolean> values) {
-            addCriterion("apppraise in", values, "apppraise");
+        public Criteria andTripStateIn(List<Byte> values) {
+            addCriterion("trip_state in", values, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseNotIn(List<Boolean> values) {
-            addCriterion("apppraise not in", values, "apppraise");
+        public Criteria andTripStateNotIn(List<Byte> values) {
+            addCriterion("trip_state not in", values, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseBetween(Boolean value1, Boolean value2) {
-            addCriterion("apppraise between", value1, value2, "apppraise");
+        public Criteria andTripStateBetween(Byte value1, Byte value2) {
+            addCriterion("trip_state between", value1, value2, "tripState");
             return (Criteria) this;
         }
 
-        public Criteria andApppraiseNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("apppraise not between", value1, value2, "apppraise");
+        public Criteria andTripStateNotBetween(Byte value1, Byte value2) {
+            addCriterion("trip_state not between", value1, value2, "tripState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseIsNull() {
+            addCriterion("appraise is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseIsNotNull() {
+            addCriterion("appraise is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseEqualTo(Integer value) {
+            addCriterion("appraise =", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseNotEqualTo(Integer value) {
+            addCriterion("appraise <>", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseGreaterThan(Integer value) {
+            addCriterion("appraise >", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("appraise >=", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseLessThan(Integer value) {
+            addCriterion("appraise <", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseLessThanOrEqualTo(Integer value) {
+            addCriterion("appraise <=", value, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseIn(List<Integer> values) {
+            addCriterion("appraise in", values, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseNotIn(List<Integer> values) {
+            addCriterion("appraise not in", values, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseBetween(Integer value1, Integer value2) {
+            addCriterion("appraise between", value1, value2, "appraise");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseNotBetween(Integer value1, Integer value2) {
+            addCriterion("appraise not between", value1, value2, "appraise");
             return (Criteria) this;
         }
 
@@ -495,62 +555,52 @@ public class TbItemCommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andItemIdEqualTo(String value) {
+        public Criteria andItemIdEqualTo(Long value) {
             addCriterion("item_id =", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotEqualTo(String value) {
+        public Criteria andItemIdNotEqualTo(Long value) {
             addCriterion("item_id <>", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThan(String value) {
+        public Criteria andItemIdGreaterThan(Long value) {
             addCriterion("item_id >", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
+        public Criteria andItemIdGreaterThanOrEqualTo(Long value) {
             addCriterion("item_id >=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThan(String value) {
+        public Criteria andItemIdLessThan(Long value) {
             addCriterion("item_id <", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThanOrEqualTo(String value) {
+        public Criteria andItemIdLessThanOrEqualTo(Long value) {
             addCriterion("item_id <=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLike(String value) {
-            addCriterion("item_id like", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdNotLike(String value) {
-            addCriterion("item_id not like", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdIn(List<String> values) {
+        public Criteria andItemIdIn(List<Long> values) {
             addCriterion("item_id in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotIn(List<String> values) {
+        public Criteria andItemIdNotIn(List<Long> values) {
             addCriterion("item_id not in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdBetween(String value1, String value2) {
+        public Criteria andItemIdBetween(Long value1, Long value2) {
             addCriterion("item_id between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotBetween(String value1, String value2) {
+        public Criteria andItemIdNotBetween(Long value1, Long value2) {
             addCriterion("item_id not between", value1, value2, "itemId");
             return (Criteria) this;
         }

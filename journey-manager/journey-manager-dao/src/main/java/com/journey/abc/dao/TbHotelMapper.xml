@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.journey.abc.pojo.po.TbHotel" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="cid" property="cid" jdbcType="BIGINT" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
     <result column="sell_piont" property="sellPiont" jdbcType="VARCHAR" />
     <result column="images" property="images" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="BIGINT" />
     <result column="param" property="param" jdbcType="VARCHAR" />
     <result column="place_id" property="placeId" jdbcType="BIGINT" />
     <result column="status" property="status" jdbcType="INTEGER" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, cid, sell_piont, images, price, param, place_id, status
+    id, name, city_id, sell_piont, images, price, param, place_id, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbHotelExample" >
     select
@@ -104,12 +104,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbHotel" >
-    insert into tb_hotel (id, name, cid, 
+    insert into tb_hotel (id, name, city_id, 
       sell_piont, images, price, 
       param, place_id, status
       )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cid,jdbcType=BIGINT}, 
-      #{sellPiont,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cityId,jdbcType=BIGINT}, 
+      #{sellPiont,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, 
       #{param,jdbcType=VARCHAR}, #{placeId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}
       )
   </insert>
@@ -122,8 +122,8 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="cid != null" >
-        cid,
+      <if test="cityId != null" >
+        city_id,
       </if>
       <if test="sellPiont != null" >
         sell_piont,
@@ -151,8 +151,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null" >
-        #{cid,jdbcType=BIGINT},
+      <if test="cityId != null" >
+        #{cityId,jdbcType=BIGINT},
       </if>
       <if test="sellPiont != null" >
         #{sellPiont,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
         #{images,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=VARCHAR},
+        #{price,jdbcType=BIGINT},
       </if>
       <if test="param != null" >
         #{param,jdbcType=VARCHAR},
@@ -189,8 +189,8 @@
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.cid != null" >
-        cid = #{record.cid,jdbcType=BIGINT},
+      <if test="record.cityId != null" >
+        city_id = #{record.cityId,jdbcType=BIGINT},
       </if>
       <if test="record.sellPiont != null" >
         sell_piont = #{record.sellPiont,jdbcType=VARCHAR},
@@ -199,7 +199,7 @@
         images = #{record.images,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
-        price = #{record.price,jdbcType=VARCHAR},
+        price = #{record.price,jdbcType=BIGINT},
       </if>
       <if test="record.param != null" >
         param = #{record.param,jdbcType=VARCHAR},
@@ -219,10 +219,10 @@
     update tb_hotel
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      cid = #{record.cid,jdbcType=BIGINT},
+      city_id = #{record.cityId,jdbcType=BIGINT},
       sell_piont = #{record.sellPiont,jdbcType=VARCHAR},
       images = #{record.images,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=BIGINT},
       param = #{record.param,jdbcType=VARCHAR},
       place_id = #{record.placeId,jdbcType=BIGINT},
       status = #{record.status,jdbcType=INTEGER}
@@ -236,8 +236,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null" >
-        cid = #{cid,jdbcType=BIGINT},
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
       </if>
       <if test="sellPiont != null" >
         sell_piont = #{sellPiont,jdbcType=VARCHAR},
@@ -246,7 +246,7 @@
         images = #{images,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=VARCHAR},
+        price = #{price,jdbcType=BIGINT},
       </if>
       <if test="param != null" >
         param = #{param,jdbcType=VARCHAR},
@@ -263,10 +263,10 @@
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbHotel" >
     update tb_hotel
     set name = #{name,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=BIGINT},
+      city_id = #{cityId,jdbcType=BIGINT},
       sell_piont = #{sellPiont,jdbcType=VARCHAR},
       images = #{images,jdbcType=VARCHAR},
-      price = #{price,jdbcType=VARCHAR},
+      price = #{price,jdbcType=BIGINT},
       param = #{param,jdbcType=VARCHAR},
       place_id = #{placeId,jdbcType=BIGINT},
       status = #{status,jdbcType=INTEGER}

@@ -435,52 +435,52 @@ public class TbHotleCommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseEqualTo(Boolean value) {
+        public Criteria andAppraiseEqualTo(Integer value) {
             addCriterion("appraise =", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseNotEqualTo(Boolean value) {
+        public Criteria andAppraiseNotEqualTo(Integer value) {
             addCriterion("appraise <>", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseGreaterThan(Boolean value) {
+        public Criteria andAppraiseGreaterThan(Integer value) {
             addCriterion("appraise >", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andAppraiseGreaterThanOrEqualTo(Integer value) {
             addCriterion("appraise >=", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseLessThan(Boolean value) {
+        public Criteria andAppraiseLessThan(Integer value) {
             addCriterion("appraise <", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseLessThanOrEqualTo(Boolean value) {
+        public Criteria andAppraiseLessThanOrEqualTo(Integer value) {
             addCriterion("appraise <=", value, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseIn(List<Boolean> values) {
+        public Criteria andAppraiseIn(List<Integer> values) {
             addCriterion("appraise in", values, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseNotIn(List<Boolean> values) {
+        public Criteria andAppraiseNotIn(List<Integer> values) {
             addCriterion("appraise not in", values, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseBetween(Boolean value1, Boolean value2) {
+        public Criteria andAppraiseBetween(Integer value1, Integer value2) {
             addCriterion("appraise between", value1, value2, "appraise");
             return (Criteria) this;
         }
 
-        public Criteria andAppraiseNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andAppraiseNotBetween(Integer value1, Integer value2) {
             addCriterion("appraise not between", value1, value2, "appraise");
             return (Criteria) this;
         }

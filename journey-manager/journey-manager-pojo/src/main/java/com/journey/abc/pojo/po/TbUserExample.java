@@ -584,52 +584,52 @@ public class TbUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andCityIdEqualTo(Integer value) {
+        public Criteria andCityIdEqualTo(Long value) {
             addCriterion("city_id =", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdNotEqualTo(Integer value) {
+        public Criteria andCityIdNotEqualTo(Long value) {
             addCriterion("city_id <>", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdGreaterThan(Integer value) {
+        public Criteria andCityIdGreaterThan(Long value) {
             addCriterion("city_id >", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCityIdGreaterThanOrEqualTo(Long value) {
             addCriterion("city_id >=", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdLessThan(Integer value) {
+        public Criteria andCityIdLessThan(Long value) {
             addCriterion("city_id <", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCityIdLessThanOrEqualTo(Long value) {
             addCriterion("city_id <=", value, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdIn(List<Integer> values) {
+        public Criteria andCityIdIn(List<Long> values) {
             addCriterion("city_id in", values, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdNotIn(List<Integer> values) {
+        public Criteria andCityIdNotIn(List<Long> values) {
             addCriterion("city_id not in", values, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdBetween(Integer value1, Integer value2) {
+        public Criteria andCityIdBetween(Long value1, Long value2) {
             addCriterion("city_id between", value1, value2, "cityId");
             return (Criteria) this;
         }
 
-        public Criteria andCityIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCityIdNotBetween(Long value1, Long value2) {
             addCriterion("city_id not between", value1, value2, "cityId");
             return (Criteria) this;
         }

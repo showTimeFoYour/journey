@@ -2,19 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.journey.abc.dao.TbItemMapper" >
   <resultMap id="BaseResultMap" type="com.journey.abc.pojo.po.TbItem" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="BIGINT" />
     <result column="num" property="num" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="start" property="start" jdbcType="TIMESTAMP" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="finished" property="finished" jdbcType="TIMESTAMP" />
     <result column="hotel_id" property="hotelId" jdbcType="BIGINT" />
     <result column="place_id" property="placeId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.journey.abc.pojo.po.TbItem" extends="BaseResultMap" >
+    <result column="contect_desc" property="contectDesc" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,9 +77,28 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, price, num, status, name, phone, start, created, finished, hotel_id, place_id, 
-    user_id
+    id, title, price, num, status, start, created, finished, hotel_id, place_id, user_id, 
+    updated
   </sql>
+  <sql id="Blob_Column_List" >
+    contect_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.journey.abc.pojo.po.TbItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbItemExample" >
     select
     <if test="distinct" >
@@ -92,15 +113,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from tb_item
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_item
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.journey.abc.pojo.po.TbItemExample" >
     delete from tb_item
@@ -110,15 +133,15 @@
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbItem" >
     insert into tb_item (id, title, price, 
-      num, status, name, 
-      phone, start, created, 
-      finished, hotel_id, place_id, 
-      user_id)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, 
-      #{num,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{start,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP}, 
-      #{finished,jdbcType=TIMESTAMP}, #{hotelId,jdbcType=BIGINT}, #{placeId,jdbcType=BIGINT}, 
-      #{userId,jdbcType=BIGINT})
+      num, status, start, 
+      created, finished, hotel_id, 
+      place_id, user_id, updated, 
+      contect_desc)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, 
+      #{num,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{start,jdbcType=TIMESTAMP}, 
+      #{created,jdbcType=TIMESTAMP}, #{finished,jdbcType=TIMESTAMP}, #{hotelId,jdbcType=BIGINT}, 
+      #{placeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{updated,jdbcType=TIMESTAMP}, 
+      #{contectDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbItem" >
     insert into tb_item
@@ -138,12 +161,6 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="phone != null" >
-        phone,
-      </if>
       <if test="start != null" >
         start,
       </if>
@@ -162,10 +179,16 @@
       <if test="userId != null" >
         user_id,
       </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="contectDesc != null" >
+        contect_desc,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -177,13 +200,7 @@
         #{num,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="start != null" >
         #{start,jdbcType=TIMESTAMP},
@@ -203,6 +220,12 @@
       <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
       </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contectDesc != null" >
+        #{contectDesc,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.journey.abc.pojo.po.TbItemExample" resultType="java.lang.Integer" >
@@ -215,7 +238,7 @@
     update tb_item
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
@@ -227,13 +250,7 @@
         num = #{record.num,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=TINYINT},
-      </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.start != null" >
         start = #{record.start,jdbcType=TIMESTAMP},
@@ -253,26 +270,50 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contectDesc != null" >
+        contect_desc = #{record.contectDesc,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_item
+    set id = #{record.id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=BIGINT},
+      num = #{record.num,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      start = #{record.start,jdbcType=TIMESTAMP},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      finished = #{record.finished,jdbcType=TIMESTAMP},
+      hotel_id = #{record.hotelId,jdbcType=BIGINT},
+      place_id = #{record.placeId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      contect_desc = #{record.contectDesc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
     update tb_item
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=BIGINT},
       num = #{record.num,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
       start = #{record.start,jdbcType=TIMESTAMP},
       created = #{record.created,jdbcType=TIMESTAMP},
       finished = #{record.finished,jdbcType=TIMESTAMP},
       hotel_id = #{record.hotelId,jdbcType=BIGINT},
       place_id = #{record.placeId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT}
+      user_id = #{record.userId,jdbcType=BIGINT},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -290,13 +331,7 @@
         num = #{num,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="start != null" >
         start = #{start,jdbcType=TIMESTAMP},
@@ -316,23 +351,44 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
       </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contectDesc != null" >
+        contect_desc = #{contectDesc,jdbcType=LONGVARCHAR},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.journey.abc.pojo.po.TbItem" >
+    update tb_item
+    set title = #{title,jdbcType=VARCHAR},
+      price = #{price,jdbcType=BIGINT},
+      num = #{num,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start = #{start,jdbcType=TIMESTAMP},
+      created = #{created,jdbcType=TIMESTAMP},
+      finished = #{finished,jdbcType=TIMESTAMP},
+      hotel_id = #{hotelId,jdbcType=BIGINT},
+      place_id = #{placeId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      contect_desc = #{contectDesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbItem" >
     update tb_item
     set title = #{title,jdbcType=VARCHAR},
       price = #{price,jdbcType=BIGINT},
       num = #{num,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
-      name = #{name,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
       start = #{start,jdbcType=TIMESTAMP},
       created = #{created,jdbcType=TIMESTAMP},
       finished = #{finished,jdbcType=TIMESTAMP},
       hotel_id = #{hotelId,jdbcType=BIGINT},
       place_id = #{placeId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=BIGINT},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

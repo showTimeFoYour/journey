@@ -117,7 +117,7 @@
 
     $('#tb').datagrid({
 
-        url: 'itemsByPage',
+        url: 'commentsByPage',
         multiSort: true,// 允许多列排序
         pagination: true, //分页栏显示
         striped: true,//隔行变色
@@ -131,11 +131,16 @@
          *
          */
         columns: [[{field: 'ck', checkbox: true},
-            {field: 'id', title: '商品编号', width: 100},
-            {field: 'title', title: '商品名称', width: 100, sortable: true},
-            {field: 'sellPoint', title: '商品卖点', width: 100, sortable: true},
-            {field: 'priceView', title: '价格', width: 100},
-            {field: 'catName', title: '商品分类', width: 100},
+            {field: 'id', title: '评论编号', width: 100},
+            {field: 'userId', title: '评论用户', width: 100},
+            {field: 'title', title: '评论标题', width: 100},
+            {field: 'content', title: '评论内容', width: 100},
+            {field: 'tripSate', title: '是否去过', width: 100},
+            {field: 'appraise', title: '评论内容', width: 100},
+            {field: 'tripTime', title: '旅行时间', width: 100},
+            {field: 'tripTime', title: '旅行时间', width: 100},
+
+             {field: 'catName', title: '商品分类', width: 100},
             {
                 field: 'created', title: '创建时间', width: 100, formatter: function (value, row, index) {
                 return moment(value).format('LL');
@@ -147,7 +152,7 @@
             }
             },
             {
-                field: 'status', title: '商品状态(前台)', width: 100,
+                field: 'commentStatus', title: '评论类型(前台)', width: 100,
                 formatter: function (value, row, index) {
 //                    console.group();
 //                    console.log(value);
@@ -156,13 +161,13 @@
 //                    console.groupEnd();
                     switch (value) {
                         case 1:
-                            return '正常';
+                            return '酒店';
                             break;
                         case 2:
-                            return '下架';
+                            return '景点';
                             break;
                         case 3:
-                            return '删除';
+                            return '订单';
                             break;
                         default:
                             return '未知';

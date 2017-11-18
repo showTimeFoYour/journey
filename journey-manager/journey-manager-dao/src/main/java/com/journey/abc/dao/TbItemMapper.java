@@ -10,21 +10,27 @@ public interface TbItemMapper {
 
     int deleteByExample(TbItemExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TbItem record);
 
     int insertSelective(TbItem record);
 
+    List<TbItem> selectByExampleWithBLOBs(TbItemExample example);
+
     List<TbItem> selectByExample(TbItemExample example);
 
-    TbItem selectByPrimaryKey(Integer id);
+    TbItem selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") TbItem record, @Param("example") TbItemExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") TbItem record, @Param("example") TbItemExample example);
 
     int updateByExample(@Param("record") TbItem record, @Param("example") TbItemExample example);
 
     int updateByPrimaryKeySelective(TbItem record);
+
+    int updateByPrimaryKeyWithBLOBs(TbItem record);
 
     int updateByPrimaryKey(TbItem record);
 }

@@ -10,7 +10,7 @@ public interface TbCityMapper {
 
     int deleteByExample(TbCityExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TbCity record);
 
@@ -18,7 +18,7 @@ public interface TbCityMapper {
 
     List<TbCity> selectByExample(TbCityExample example);
 
-    TbCity selectByPrimaryKey(Integer id);
+    TbCity selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") TbCity record, @Param("example") TbCityExample example);
 

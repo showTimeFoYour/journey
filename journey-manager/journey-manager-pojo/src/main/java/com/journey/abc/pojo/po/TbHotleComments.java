@@ -13,7 +13,7 @@ public class TbHotleComments {
 
     private Boolean tripState;
 
-    private Boolean appraise;
+    private Integer appraise;
 
     private Long hotelId;
 
@@ -61,11 +61,11 @@ public class TbHotleComments {
         this.tripState = tripState;
     }
 
-    public Boolean getAppraise() {
+    public Integer getAppraise() {
         return appraise;
     }
 
-    public void setAppraise(Boolean appraise) {
+    public void setAppraise(Integer appraise) {
         this.appraise = appraise;
     }
 
