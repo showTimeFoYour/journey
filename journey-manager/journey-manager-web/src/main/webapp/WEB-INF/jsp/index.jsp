@@ -27,23 +27,27 @@
                 <li data-options="attributes:{'href':'item-param-list'}">规格参数</li>
             </ul>
         </div>
-        <div title="景点管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
+        <div title="旅行管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
+            <div id="menu1" class="easyui-accordion">
+        <div title="景点管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:5px 0;line-height: 10px">
             <ul class="easyui-tree">
                 <li data-options="attributes:{'href':'place-add'}">新增景点</li>
                 <li data-options="attributes:{'href':'place-list'}">查询景点</li>
             </ul>
         </div>
-        <div title="酒店管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
+        <div title="酒店管理" data-options="iconCls:'icon-tip'" style="padding:5px 0; ">
             <ul class="easyui-tree">
                 <li data-options="attributes:{'href':'hotel-add'}">新增酒店</li>
                 <li data-options="attributes:{'href':'hotel-list'}">查询酒店</li>
             </ul>
         </div>
-        <div title="城市管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
+        <div title="城市管理" data-options="iconCls:'icon-tip'" style="padding:5px 0;">
             <ul class="easyui-tree">
                 <li data-options="attributes:{'href':'city-add'}">新增城市</li>
                 <li data-options="attributes:{'href':'city-list'}">查询城市</li>
             </ul>
+        </div>
+        </div>
         </div>
         <div title="评论管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
@@ -56,10 +60,15 @@
                 <li data-options="attributes:{'href':'comment-list'}">查询游记</li>
             </ul>
         </div>
-
-
-
+        <div title="用户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
+            <ul class="easyui-tree">
+                <li data-options="attributes:{'href':'user-list'}">添加用户</li>
+                <li data-options="attributes:{'href':'user-add'}">查询用户</li>
+            </ul>
+        </div>
     </div>
+
+
 </div>
 
 <div data-options="region:'center'" style="background:#eee;">
@@ -77,10 +86,6 @@
 <script src="js/jquery-easyui-1.5/jquery.min.js"></script>
 <!-- jquery easyui -->
 <script src="js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-<%--语言包--%>
-<script src="js/ueditor/ueditor.config.js"></script>
-<script src="js/ueditor/ueditor.all.js"></script>
-<script src="js/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
 
 <%--引入日期处理库--%>
 <script src="js/moment/moment-with-locales.js"></script>

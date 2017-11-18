@@ -1,5 +1,6 @@
 package com.journey.abc.dao;
 
+import com.journey.abc.pojo.po.TbCity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

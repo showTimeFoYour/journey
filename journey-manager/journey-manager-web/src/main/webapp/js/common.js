@@ -34,7 +34,6 @@ var ddshop = {
                 closable:true
             });
         }
-
     }
 };
 
