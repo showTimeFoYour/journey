@@ -76,7 +76,6 @@
         <div title="欢迎页面" style="padding:20px;">
              欢迎来到XX旅行后台管理系统
             <img src="#">
-            
         </div>
     </div>
 </div>
