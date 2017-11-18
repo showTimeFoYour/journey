@@ -1,9 +1,8 @@
 package com.journey.abc.dao;
 
-import java.util.List;
-
 import com.journey.abc.pojo.po.TbTravelogue;
 import com.journey.abc.pojo.po.TbTravelogueExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbTravelogueMapper {

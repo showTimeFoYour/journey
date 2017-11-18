@@ -7,9 +7,9 @@ public class TbTravelogueComment {
 
     private Long travelId;
 
-    private Date create;
+    private Date created;
 
-    private Date update;
+    private Date updated;
 
     private String desc;
 
@@ -29,20 +29,20 @@ public class TbTravelogueComment {
         this.travelId = travelId;
     }
 
-    public Date getCreate() {
-        return create;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreate(Date create) {
-        this.create = create;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getUpdate() {
-        return update;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdate(Date update) {
-        this.update = update;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public String getDesc() {

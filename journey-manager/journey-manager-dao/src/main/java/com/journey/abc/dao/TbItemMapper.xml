@@ -10,8 +10,8 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="start" property="start" jdbcType="TIMESTAMP" />
-    <result column="create" property="create" jdbcType="TIMESTAMP" />
-    <result column="finish" property="finish" jdbcType="TIMESTAMP" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="finished" property="finished" jdbcType="TIMESTAMP" />
     <result column="hotel_id" property="hotelId" jdbcType="BIGINT" />
     <result column="place_id" property="placeId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, price, num, status, name, phone, start, create, finish, hotel_id, place_id, 
+    id, title, price, num, status, name, phone, start, created, finished, hotel_id, place_id, 
     user_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbItemExample" >
@@ -111,13 +111,13 @@
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbItem" >
     insert into tb_item (id, title, price, 
       num, status, name, 
-      phone, start, create, 
-      finish, hotel_id, place_id, 
+      phone, start, created, 
+      finished, hotel_id, place_id, 
       user_id)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, 
       #{num,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{start,jdbcType=TIMESTAMP}, #{create,jdbcType=TIMESTAMP}, 
-      #{finish,jdbcType=TIMESTAMP}, #{hotelId,jdbcType=BIGINT}, #{placeId,jdbcType=BIGINT}, 
+      #{phone,jdbcType=VARCHAR}, #{start,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP}, 
+      #{finished,jdbcType=TIMESTAMP}, #{hotelId,jdbcType=BIGINT}, #{placeId,jdbcType=BIGINT}, 
       #{userId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbItem" >
@@ -147,11 +147,11 @@
       <if test="start != null" >
         start,
       </if>
-      <if test="create != null" >
-        create,
+      <if test="created != null" >
+        created,
       </if>
-      <if test="finish != null" >
-        finish,
+      <if test="finished != null" >
+        finished,
       </if>
       <if test="hotelId != null" >
         hotel_id,
@@ -188,11 +188,11 @@
       <if test="start != null" >
         #{start,jdbcType=TIMESTAMP},
       </if>
-      <if test="create != null" >
-        #{create,jdbcType=TIMESTAMP},
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="finish != null" >
-        #{finish,jdbcType=TIMESTAMP},
+      <if test="finished != null" >
+        #{finished,jdbcType=TIMESTAMP},
       </if>
       <if test="hotelId != null" >
         #{hotelId,jdbcType=BIGINT},
@@ -238,11 +238,11 @@
       <if test="record.start != null" >
         start = #{record.start,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.create != null" >
-        create = #{record.create,jdbcType=TIMESTAMP},
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.finish != null" >
-        finish = #{record.finish,jdbcType=TIMESTAMP},
+      <if test="record.finished != null" >
+        finished = #{record.finished,jdbcType=TIMESTAMP},
       </if>
       <if test="record.hotelId != null" >
         hotel_id = #{record.hotelId,jdbcType=BIGINT},
@@ -268,8 +268,8 @@
       name = #{record.name,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       start = #{record.start,jdbcType=TIMESTAMP},
-      create = #{record.create,jdbcType=TIMESTAMP},
-      finish = #{record.finish,jdbcType=TIMESTAMP},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      finished = #{record.finished,jdbcType=TIMESTAMP},
       hotel_id = #{record.hotelId,jdbcType=BIGINT},
       place_id = #{record.placeId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT}
@@ -301,11 +301,11 @@
       <if test="start != null" >
         start = #{start,jdbcType=TIMESTAMP},
       </if>
-      <if test="create != null" >
-        create = #{create,jdbcType=TIMESTAMP},
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="finish != null" >
-        finish = #{finish,jdbcType=TIMESTAMP},
+      <if test="finished != null" >
+        finished = #{finished,jdbcType=TIMESTAMP},
       </if>
       <if test="hotelId != null" >
         hotel_id = #{hotelId,jdbcType=BIGINT},
@@ -328,8 +328,8 @@
       name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       start = #{start,jdbcType=TIMESTAMP},
-      create = #{create,jdbcType=TIMESTAMP},
-      finish = #{finish,jdbcType=TIMESTAMP},
+      created = #{created,jdbcType=TIMESTAMP},
+      finished = #{finished,jdbcType=TIMESTAMP},
       hotel_id = #{hotelId,jdbcType=BIGINT},
       place_id = #{placeId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT}

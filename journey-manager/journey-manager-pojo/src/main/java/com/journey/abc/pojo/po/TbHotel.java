@@ -7,7 +7,7 @@ public class TbHotel {
 
     private Long cid;
 
-    private String sellpiont;
+    private String sellPiont;
 
     private String images;
 
@@ -43,12 +43,12 @@ public class TbHotel {
         this.cid = cid;
     }
 
-    public String getSellpiont() {
-        return sellpiont;
+    public String getSellPiont() {
+        return sellPiont;
     }
 
-    public void setSellpiont(String sellpiont) {
-        this.sellpiont = sellpiont == null ? null : sellpiont.trim();
+    public void setSellPiont(String sellPiont) {
+        this.sellPiont = sellPiont == null ? null : sellPiont.trim();
     }
 
     public String getImages() {

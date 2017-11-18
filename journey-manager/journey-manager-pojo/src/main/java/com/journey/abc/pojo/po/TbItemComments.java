@@ -17,9 +17,9 @@ public class TbItemComments {
 
     private String itemId;
 
-    private Date create;
+    private Date created;
 
-    private Date update;
+    private Date updated;
 
     public Long getId() {
         return id;
@@ -77,19 +77,19 @@ public class TbItemComments {
         this.itemId = itemId == null ? null : itemId.trim();
     }
 
-    public Date getCreate() {
-        return create;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreate(Date create) {
-        this.create = create;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getUpdate() {
-        return update;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdate(Date update) {
-        this.update = update;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }

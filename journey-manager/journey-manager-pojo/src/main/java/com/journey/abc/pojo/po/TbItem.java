@@ -19,9 +19,9 @@ public class TbItem {
 
     private Date start;
 
-    private Date create;
+    private Date created;
 
-    private Date finish;
+    private Date finished;
 
     private Long hotelId;
 
@@ -93,20 +93,20 @@ public class TbItem {
         this.start = start;
     }
 
-    public Date getCreate() {
-        return create;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreate(Date create) {
-        this.create = create;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getFinish() {
-        return finish;
+    public Date getFinished() {
+        return finished;
     }
 
-    public void setFinish(Date finish) {
-        this.finish = finish;
+    public void setFinished(Date finished) {
+        this.finished = finished;
     }
 
     public Long getHotelId() {

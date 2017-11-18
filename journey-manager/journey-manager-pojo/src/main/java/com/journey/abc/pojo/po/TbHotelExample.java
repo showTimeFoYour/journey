@@ -294,73 +294,73 @@ public class TbHotelExample {
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontIsNull() {
-            addCriterion("sellPiont is null");
+        public Criteria andSellPiontIsNull() {
+            addCriterion("sell_piont is null");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontIsNotNull() {
-            addCriterion("sellPiont is not null");
+        public Criteria andSellPiontIsNotNull() {
+            addCriterion("sell_piont is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontEqualTo(String value) {
-            addCriterion("sellPiont =", value, "sellpiont");
+        public Criteria andSellPiontEqualTo(String value) {
+            addCriterion("sell_piont =", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontNotEqualTo(String value) {
-            addCriterion("sellPiont <>", value, "sellpiont");
+        public Criteria andSellPiontNotEqualTo(String value) {
+            addCriterion("sell_piont <>", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontGreaterThan(String value) {
-            addCriterion("sellPiont >", value, "sellpiont");
+        public Criteria andSellPiontGreaterThan(String value) {
+            addCriterion("sell_piont >", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontGreaterThanOrEqualTo(String value) {
-            addCriterion("sellPiont >=", value, "sellpiont");
+        public Criteria andSellPiontGreaterThanOrEqualTo(String value) {
+            addCriterion("sell_piont >=", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontLessThan(String value) {
-            addCriterion("sellPiont <", value, "sellpiont");
+        public Criteria andSellPiontLessThan(String value) {
+            addCriterion("sell_piont <", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontLessThanOrEqualTo(String value) {
-            addCriterion("sellPiont <=", value, "sellpiont");
+        public Criteria andSellPiontLessThanOrEqualTo(String value) {
+            addCriterion("sell_piont <=", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontLike(String value) {
-            addCriterion("sellPiont like", value, "sellpiont");
+        public Criteria andSellPiontLike(String value) {
+            addCriterion("sell_piont like", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontNotLike(String value) {
-            addCriterion("sellPiont not like", value, "sellpiont");
+        public Criteria andSellPiontNotLike(String value) {
+            addCriterion("sell_piont not like", value, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontIn(List<String> values) {
-            addCriterion("sellPiont in", values, "sellpiont");
+        public Criteria andSellPiontIn(List<String> values) {
+            addCriterion("sell_piont in", values, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontNotIn(List<String> values) {
-            addCriterion("sellPiont not in", values, "sellpiont");
+        public Criteria andSellPiontNotIn(List<String> values) {
+            addCriterion("sell_piont not in", values, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontBetween(String value1, String value2) {
-            addCriterion("sellPiont between", value1, value2, "sellpiont");
+        public Criteria andSellPiontBetween(String value1, String value2) {
+            addCriterion("sell_piont between", value1, value2, "sellPiont");
             return (Criteria) this;
         }
 
-        public Criteria andSellpiontNotBetween(String value1, String value2) {
-            addCriterion("sellPiont not between", value1, value2, "sellpiont");
+        public Criteria andSellPiontNotBetween(String value1, String value2) {
+            addCriterion("sell_piont not between", value1, value2, "sellPiont");
             return (Criteria) this;
         }
 

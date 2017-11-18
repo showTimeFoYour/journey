@@ -1,12 +1,9 @@
 package com.journey.abc.dao;
 
-
-
 import com.journey.abc.pojo.po.TbCity;
 import com.journey.abc.pojo.po.TbCityExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbCityMapper {
     int countByExample(TbCityExample example);

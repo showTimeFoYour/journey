@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.journey.abc.pojo.po.TbTravelogueComment" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="travel_id" property="travelId" jdbcType="BIGINT" />
-    <result column="create" property="create" jdbcType="TIMESTAMP" />
-    <result column="update" property="update" jdbcType="TIMESTAMP" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.journey.abc.pojo.po.TbTravelogueComment" extends="BaseResultMap" >
     <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, travel_id, create, update
+    id, travel_id, created, updated
   </sql>
   <sql id="Blob_Column_List" >
     desc
@@ -123,10 +123,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
-    insert into tb_travelogue_comment (id, travel_id, create, 
-      update, desc)
-    values (#{id,jdbcType=BIGINT}, #{travelId,jdbcType=BIGINT}, #{create,jdbcType=TIMESTAMP}, 
-      #{update,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR})
+    insert into tb_travelogue_comment (id, travel_id, created, 
+      updated, desc)
+    values (#{id,jdbcType=BIGINT}, #{travelId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     insert into tb_travelogue_comment
@@ -137,11 +137,11 @@
       <if test="travelId != null" >
         travel_id,
       </if>
-      <if test="create != null" >
-        create,
+      <if test="created != null" >
+        created,
       </if>
-      <if test="update != null" >
-        update,
+      <if test="updated != null" >
+        updated,
       </if>
       <if test="desc != null" >
         desc,
@@ -154,11 +154,11 @@
       <if test="travelId != null" >
         #{travelId,jdbcType=BIGINT},
       </if>
-      <if test="create != null" >
-        #{create,jdbcType=TIMESTAMP},
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="update != null" >
-        #{update,jdbcType=TIMESTAMP},
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="desc != null" >
         #{desc,jdbcType=LONGVARCHAR},
@@ -180,11 +180,11 @@
       <if test="record.travelId != null" >
         travel_id = #{record.travelId,jdbcType=BIGINT},
       </if>
-      <if test="record.create != null" >
-        create = #{record.create,jdbcType=TIMESTAMP},
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.update != null" >
-        update = #{record.update,jdbcType=TIMESTAMP},
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.desc != null" >
         desc = #{record.desc,jdbcType=LONGVARCHAR},
@@ -198,8 +198,8 @@
     update tb_travelogue_comment
     set id = #{record.id,jdbcType=BIGINT},
       travel_id = #{record.travelId,jdbcType=BIGINT},
-      create = #{record.create,jdbcType=TIMESTAMP},
-      update = #{record.update,jdbcType=TIMESTAMP},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
       desc = #{record.desc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -209,8 +209,8 @@
     update tb_travelogue_comment
     set id = #{record.id,jdbcType=BIGINT},
       travel_id = #{record.travelId,jdbcType=BIGINT},
-      create = #{record.create,jdbcType=TIMESTAMP},
-      update = #{record.update,jdbcType=TIMESTAMP}
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -221,11 +221,11 @@
       <if test="travelId != null" >
         travel_id = #{travelId,jdbcType=BIGINT},
       </if>
-      <if test="create != null" >
-        create = #{create,jdbcType=TIMESTAMP},
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="update != null" >
-        update = #{update,jdbcType=TIMESTAMP},
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
       </if>
       <if test="desc != null" >
         desc = #{desc,jdbcType=LONGVARCHAR},
@@ -236,16 +236,16 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     update tb_travelogue_comment
     set travel_id = #{travelId,jdbcType=BIGINT},
-      create = #{create,jdbcType=TIMESTAMP},
-      update = #{update,jdbcType=TIMESTAMP},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
       desc = #{desc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     update tb_travelogue_comment
     set travel_id = #{travelId,jdbcType=BIGINT},
-      create = #{create,jdbcType=TIMESTAMP},
-      update = #{update,jdbcType=TIMESTAMP}
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

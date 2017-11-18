@@ -1,9 +1,8 @@
 package com.journey.abc.dao;
 
-import java.util.List;
-
 import com.journey.abc.pojo.po.TbHotel;
 import com.journey.abc.pojo.po.TbHotelExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbHotelMapper {

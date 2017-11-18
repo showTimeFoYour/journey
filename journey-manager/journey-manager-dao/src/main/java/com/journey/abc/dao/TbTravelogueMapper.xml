@@ -5,9 +5,9 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="create" property="create" jdbcType="TIMESTAMP" />
-    <result column="update" property="update" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, title, create, update, status
+    id, user_id, title, status, created, updated
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbTravelogueExample" >
     select
@@ -102,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbTravelogue" >
     insert into tb_travelogue (id, user_id, title, 
-      create, update, status
+      status, created, updated
       )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
-      #{create,jdbcType=TIMESTAMP}, #{update,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}
+      #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbTravelogue" >
@@ -120,14 +120,14 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="create != null" >
-        create,
-      </if>
-      <if test="update != null" >
-        update,
-      </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updated != null" >
+        updated,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -140,14 +140,14 @@
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="create != null" >
-        #{create,jdbcType=TIMESTAMP},
-      </if>
-      <if test="update != null" >
-        #{update,jdbcType=TIMESTAMP},
-      </if>
       <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -169,14 +169,14 @@
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.create != null" >
-        create = #{record.create,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.update != null" >
-        update = #{record.update,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -188,9 +188,9 @@
     set id = #{record.id,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
-      create = #{record.create,jdbcType=TIMESTAMP},
-      update = #{record.update,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=VARCHAR}
+      status = #{record.status,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -204,14 +204,14 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="create != null" >
-        create = #{create,jdbcType=TIMESTAMP},
-      </if>
-      <if test="update != null" >
-        update = #{update,jdbcType=TIMESTAMP},
-      </if>
       <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -220,9 +220,9 @@
     update tb_travelogue
     set user_id = #{userId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      create = #{create,jdbcType=TIMESTAMP},
-      update = #{update,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=VARCHAR}
+      status = #{status,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

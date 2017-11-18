@@ -9,11 +9,11 @@ public class TbTravelogue {
 
     private String title;
 
-    private Date create;
+    private Integer status;
 
-    private Date update;
+    private Date created;
 
-    private String status;
+    private Date updated;
 
     public Long getId() {
         return id;
@@ -39,27 +39,27 @@ public class TbTravelogue {
         this.title = title == null ? null : title.trim();
     }
 
-    public Date getCreate() {
-        return create;
-    }
-
-    public void setCreate(Date create) {
-        this.create = create;
-    }
-
-    public Date getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(Date update) {
-        this.update = update;
-    }
-
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
