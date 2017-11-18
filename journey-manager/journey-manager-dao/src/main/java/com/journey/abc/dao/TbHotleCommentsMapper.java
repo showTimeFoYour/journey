@@ -1,8 +1,9 @@
 package com.journey.abc.dao;
 
+import java.util.List;
+
 import com.journey.abc.pojo.po.TbHotleComments;
 import com.journey.abc.pojo.po.TbHotleCommentsExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbHotleCommentsMapper {

@@ -564,63 +564,63 @@ public class TbPlaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdIsNull() {
-            addCriterion("hotel_id is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdIsNotNull() {
-            addCriterion("hotel_id is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdEqualTo(Integer value) {
-            addCriterion("hotel_id =", value, "hotelId");
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdNotEqualTo(Integer value) {
-            addCriterion("hotel_id <>", value, "hotelId");
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdGreaterThan(Integer value) {
-            addCriterion("hotel_id >", value, "hotelId");
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("hotel_id >=", value, "hotelId");
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdLessThan(Integer value) {
-            addCriterion("hotel_id <", value, "hotelId");
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdLessThanOrEqualTo(Integer value) {
-            addCriterion("hotel_id <=", value, "hotelId");
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdIn(List<Integer> values) {
-            addCriterion("hotel_id in", values, "hotelId");
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdNotIn(List<Integer> values) {
-            addCriterion("hotel_id not in", values, "hotelId");
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdBetween(Integer value1, Integer value2) {
-            addCriterion("hotel_id between", value1, value2, "hotelId");
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHotelIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("hotel_id not between", value1, value2, "hotelId");
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
     }

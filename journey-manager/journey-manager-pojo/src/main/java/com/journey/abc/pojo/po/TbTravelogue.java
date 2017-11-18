@@ -13,6 +13,8 @@ public class TbTravelogue {
 
     private Date update;
 
+    private String status;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class TbTravelogue {
 
     public void setUpdate(Date update) {
         this.update = update;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

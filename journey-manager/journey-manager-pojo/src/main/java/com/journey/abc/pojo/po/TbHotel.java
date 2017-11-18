@@ -17,6 +17,8 @@ public class TbHotel {
 
     private Long placeId;
 
+    private Integer status;
+
     public Long getId() {
         return id;
     }
@@ -79,5 +81,13 @@ public class TbHotel {
 
     public void setPlaceId(Long placeId) {
         this.placeId = placeId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

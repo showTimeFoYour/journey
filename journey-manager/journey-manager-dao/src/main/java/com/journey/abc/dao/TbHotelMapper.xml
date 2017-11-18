@@ -10,6 +10,7 @@
     <result column="price" property="price" jdbcType="VARCHAR" />
     <result column="param" property="param" jdbcType="VARCHAR" />
     <result column="place_id" property="placeId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, cid, sellPiont, images, price, param, place_id
+    id, name, cid, sellPiont, images, price, param, place_id, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbHotelExample" >
     select
@@ -105,10 +106,12 @@
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbHotel" >
     insert into tb_hotel (id, name, cid, 
       sellPiont, images, price, 
-      param, place_id)
+      param, place_id, status
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cid,jdbcType=BIGINT}, 
       #{sellpiont,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
-      #{param,jdbcType=VARCHAR}, #{placeId,jdbcType=BIGINT})
+      #{param,jdbcType=VARCHAR}, #{placeId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbHotel" >
     insert into tb_hotel
@@ -137,6 +140,9 @@
       <if test="placeId != null" >
         place_id,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -162,6 +168,9 @@
       </if>
       <if test="placeId != null" >
         #{placeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -198,6 +207,9 @@
       <if test="record.placeId != null" >
         place_id = #{record.placeId,jdbcType=BIGINT},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +224,8 @@
       images = #{record.images,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=VARCHAR},
       param = #{record.param,jdbcType=VARCHAR},
-      place_id = #{record.placeId,jdbcType=BIGINT}
+      place_id = #{record.placeId,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +254,9 @@
       <if test="placeId != null" >
         place_id = #{placeId,jdbcType=BIGINT},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -252,7 +268,8 @@
       images = #{images,jdbcType=VARCHAR},
       price = #{price,jdbcType=VARCHAR},
       param = #{param,jdbcType=VARCHAR},
-      place_id = #{placeId,jdbcType=BIGINT}
+      place_id = #{placeId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -7,6 +7,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="create" property="create" jdbcType="TIMESTAMP" />
     <result column="update" property="update" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, title, create, update
+    id, user_id, title, create, update, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbTravelogueExample" >
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbTravelogue" >
     insert into tb_travelogue (id, user_id, title, 
-      create, update)
+      create, update, status
+      )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
-      #{create,jdbcType=TIMESTAMP}, #{update,jdbcType=TIMESTAMP})
+      #{create,jdbcType=TIMESTAMP}, #{update,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbTravelogue" >
     insert into tb_travelogue
@@ -123,6 +126,9 @@
       <if test="update != null" >
         update,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -139,6 +145,9 @@
       </if>
       <if test="update != null" >
         #{update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +175,9 @@
       <if test="record.update != null" >
         update = #{record.update,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +189,8 @@
       user_id = #{record.userId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       create = #{record.create,jdbcType=TIMESTAMP},
-      update = #{record.update,jdbcType=TIMESTAMP}
+      update = #{record.update,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +210,9 @@
       <if test="update != null" >
         update = #{update,jdbcType=TIMESTAMP},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -205,7 +221,8 @@
     set user_id = #{userId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
       create = #{create,jdbcType=TIMESTAMP},
-      update = #{update,jdbcType=TIMESTAMP}
+      update = #{update,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

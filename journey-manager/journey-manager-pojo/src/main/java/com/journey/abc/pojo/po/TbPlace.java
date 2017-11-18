@@ -15,7 +15,7 @@ public class TbPlace {
 
     private String param;
 
-    private Integer hotelId;
+    private Integer status;
 
     public Long getId() {
         return id;
@@ -73,11 +73,11 @@ public class TbPlace {
         this.param = param == null ? null : param.trim();
     }
 
-    public Integer getHotelId() {
-        return hotelId;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
