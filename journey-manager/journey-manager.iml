@@ -12,7 +12,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.wdt.ddshop:dd-common:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="journey-common" />
     <orderEntry type="library" name="Maven: org.apache.activemq:activemq-all:5.11.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.solr:solr-solrj:4.10.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.3" level="project" />

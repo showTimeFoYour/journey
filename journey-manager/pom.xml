@@ -24,8 +24,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.wdt.ddshop</groupId>
-            <artifactId>dd-common</artifactId>
+            <groupId>com.journey.hornets</groupId>
+            <artifactId>journey-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
