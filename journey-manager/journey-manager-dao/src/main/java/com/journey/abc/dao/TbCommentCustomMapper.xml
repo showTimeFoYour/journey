@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.journey.abc.dao.TbCommentCustomMapper" >
+<mapper namespace="com.journey.abc.dao.TbCommentCustomMapper">
+    <sql id="base_list_hotel">
+s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
+h.user_id AS  userId,h.title as title,h.content as content,h.trip_state as tripState,
+h.created as created,h.updated as updated,h.appraise as appraise,
+ hl.name as hotelName
+   </sql>
 
+    <sql id="base_list_item">
+          s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
+        i.user_id AS userId, i.title as title, i.content as content,i.trip_state as tripState,
+        i.created as created,i.updated as updated, i.appraise as appraise,
+        it.title as itemName
+    </sql>
 
+    <sql id="base_list_place">
+       s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
+        p.user_id AS userId, p.title as title, p.content as content,p.trip_state as tripState,
+        p.created as created,p.updated as updated, p.appraise as appraise,
+        pl.name as placeName
+    </sql>
+
+    <select id="listCommentHotelByPage" resultType="com.journey.abc.pojo.vo.TbCommentCustom">
+
+            SELECT
+            <include refid="base_list_hotel"/>
+            from tb_comment_status s LEFT JOIN tb_hotle_comments h
+            on s.comment_id =h.id LEFT JOIN tb_hotel hl on h.hotel_id=hl.id where s.comment_status=1
+            LIMIT #{page.offset},#{page.rows}
+
+    </select>
+
+    <select id="listCommentItemByPage" resultType="com.journey.abc.pojo.vo.TbCommentCustom">
+
+        SELECT
+        <include refid="base_list_item"/>
+        FROM tb_comment_status s LEFT JOIN tb_item_comments i on s.comment_id=i.id LEFT JOIN tb_item AS it
+        ON i.item_id=it.id where s.comment_status=3
+        LIMIT #{page.offset},#{page.rows}
+
+    </select>
+
+    <select id="listCommentPlaceByPage" resultType="com.journey.abc.pojo.vo.TbCommentCustom">
+
+        SELECT
+        <include refid="base_list_place"/>
+        FROM tb_comment_status s LEFT JOIN tb_place_comments p on s.comment_id=p.id LEFT JOIN tb_place AS pl
+        ON p.place_id=pl.id where s.comment_status=2
+        LIMIT #{page.offset},#{page.rows}
+
+    </select>
+
+    <select id="countComments" resultType="java.lang.Integer">
+        SELECT count(1) FROM  tb_comment_status s
+    </select>
 </mapper>

@@ -25,9 +25,9 @@
             </button>
         </div>
         <div>
+            <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">驳回</button>
 
             <button onclick="down()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">发布</button>
-            <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">驳回</button>
 
         </div>
 
@@ -85,7 +85,7 @@
             var ids = [];
             for (var i = 0; i < selections.length; i++) {
                 //console.log(selections[i].status);
-                if(selections[i].status ==2){
+                if(selections[i].commentStatus ==2){
                     $.messager.alert('提示', '请不要选择已经下架的记录！');
                     return;
                 }
@@ -123,34 +123,16 @@
         striped: true,//隔行变色
         rownumbers: true,//显示第几列
         fit: true,//调整面板屏幕
-        pageSize: 20, //初始分页列表大小
-        pageList: [20, 30, 50],
-        toolbar:'#toolbar',
+        pageSize: 10, //初始分页列表大小
+        pageList: [10, 30, 50],
+        toolbar:'#comm-toolbar',
         /**
          * columns 工具栏
          *
          */
         columns: [[{field: 'ck', checkbox: true},
-            {field: 'id', title: '评论编号', width: 100},
+            {field: 'commentId', title: '评论编号', width: 100},
             {field: 'userId', title: '评论用户', width: 100},
-            {field: 'title', title: '评论标题', width: 100},
-            {field: 'content', title: '评论内容', width: 100},
-            {field: 'tripSate', title: '是否去过', width: 100},
-            {field: 'appraise', title: '评论内容', width: 100},
-            {field: 'tripTime', title: '旅行时间', width: 100},
-            {field: 'tripTime', title: '旅行时间', width: 100},
-
-             {field: 'catName', title: '商品分类', width: 100},
-            {
-                field: 'created', title: '创建时间', width: 100, formatter: function (value, row, index) {
-                return moment(value).format('LL');
-            }
-            },
-            {
-                field: 'updated', title: '更新时间', width: 100, formatter: function (value, row, index) {
-                return moment(value).format('LL');
-            }
-            },
             {
                 field: 'commentStatus', title: '评论类型(前台)', width: 100,
                 formatter: function (value, row, index) {
@@ -175,7 +157,65 @@
 
                     }
                 }
+            },
+            {field: 'title', title: '评论标题', width: 100},
+            {field: 'content', title: '评论内容', width: 100},
+            {field: 'tripState', title: '是否去过', width: 100,
+                formatter: function (value, row, index) {
+                switch (value){
+                    case true:
+                        return '去过';
+                        break;
+                    case false:
+                        return '未去过';
+                        break;
+                    default:
+                        return '未知';
+                        break;
+                }
+                }
+            },
+            {field: 'appraise', title: '评论星级', width: 100,
+                formatter: function (value, row, index) {
+                    switch (value) {
+                        case 1:
+                            return '很差';
+                            break;
+                        case 2:
+                            return '差';
+                            break;
+                        case 3:
+                            return '一般';
+                            break;
+                        case 4:
+                            return '满意';
+                            break;
+                        case 5:
+                            return '非常满意';
+                            break;
+                        default:
+                            return '未知';
+                            break;
+
+                    }
+
+                }
+            },
+
+            {field: 'hotelName', title: '酒店名称', width: 100},
+            {field: 'itemName', title: '订单名称', width: 100},
+            {field: 'placeName', title: '景点名称', width: 100},
+            {
+                field: 'created', title: '创建时间', width: 100, formatter: function (value, row, index) {
+                return moment(value).format('LL');
             }
+            },
+            {
+                field: 'updated', title: '更新时间', width: 100, formatter: function (value, row, index) {
+                return moment(value).format('LL');
+            }
+            }
+
 
         ]]
 

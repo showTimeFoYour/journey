@@ -1,5 +1,6 @@
 package com.journey.abc.dao;
 
+import com.journey.abc.pojo.po.TbCity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class TbCityMapperTest {
 
     @Test
     public void add() throws Exception {
-        TbCity city=TbCityDao.selectByPrimaryKey(1);
+        TbCity city=TbCityDao.selectByPrimaryKey(1L);
         System.out.println(city);
     }
 

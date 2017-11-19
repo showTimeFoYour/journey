@@ -7,6 +7,10 @@ public class TbCommentStatus {
 
     private Integer commentStatus;
 
+    private Long commentUp;
+
+    private Long commentDown;
+
     public Long getId() {
         return id;
     }
@@ -29,5 +33,21 @@ public class TbCommentStatus {
 
     public void setCommentStatus(Integer commentStatus) {
         this.commentStatus = commentStatus;
+    }
+
+    public Long getCommentUp() {
+        return commentUp;
+    }
+
+    public void setCommentUp(Long commentUp) {
+        this.commentUp = commentUp;
+    }
+
+    public Long getCommentDown() {
+        return commentDown;
+    }
+
+    public void setCommentDown(Long commentDown) {
+        this.commentDown = commentDown;
     }
 }

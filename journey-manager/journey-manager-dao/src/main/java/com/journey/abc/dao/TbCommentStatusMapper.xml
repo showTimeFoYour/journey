@@ -5,6 +5,8 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="comment_id" property="commentId" jdbcType="BIGINT" />
     <result column="comment_status" property="commentStatus" jdbcType="INTEGER" />
+    <result column="comment_up" property="commentUp" jdbcType="BIGINT" />
+    <result column="comment_down" property="commentDown" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, comment_id, comment_status
+    id, comment_id, comment_status, comment_up, comment_down
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.journey.abc.pojo.po.TbCommentStatusExample" >
     select
@@ -98,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbCommentStatus" >
-    insert into tb_comment_status (id, comment_id, comment_status
-      )
-    values (#{id,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, #{commentStatus,jdbcType=INTEGER}
-      )
+    insert into tb_comment_status (id, comment_id, comment_status, 
+      comment_up, comment_down)
+    values (#{id,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, #{commentStatus,jdbcType=INTEGER}, 
+      #{commentUp,jdbcType=BIGINT}, #{commentDown,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbCommentStatus" >
     insert into tb_comment_status
@@ -115,6 +117,12 @@
       <if test="commentStatus != null" >
         comment_status,
       </if>
+      <if test="commentUp != null" >
+        comment_up,
+      </if>
+      <if test="commentDown != null" >
+        comment_down,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -125,6 +133,12 @@
       </if>
       <if test="commentStatus != null" >
         #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commentUp != null" >
+        #{commentUp,jdbcType=BIGINT},
+      </if>
+      <if test="commentDown != null" >
+        #{commentDown,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -146,6 +160,12 @@
       <if test="record.commentStatus != null" >
         comment_status = #{record.commentStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.commentUp != null" >
+        comment_up = #{record.commentUp,jdbcType=BIGINT},
+      </if>
+      <if test="record.commentDown != null" >
+        comment_down = #{record.commentDown,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +175,9 @@
     update tb_comment_status
     set id = #{record.id,jdbcType=BIGINT},
       comment_id = #{record.commentId,jdbcType=BIGINT},
-      comment_status = #{record.commentStatus,jdbcType=INTEGER}
+      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      comment_up = #{record.commentUp,jdbcType=BIGINT},
+      comment_down = #{record.commentDown,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +191,21 @@
       <if test="commentStatus != null" >
         comment_status = #{commentStatus,jdbcType=INTEGER},
       </if>
+      <if test="commentUp != null" >
+        comment_up = #{commentUp,jdbcType=BIGINT},
+      </if>
+      <if test="commentDown != null" >
+        comment_down = #{commentDown,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbCommentStatus" >
     update tb_comment_status
     set comment_id = #{commentId,jdbcType=BIGINT},
-      comment_status = #{commentStatus,jdbcType=INTEGER}
+      comment_status = #{commentStatus,jdbcType=INTEGER},
+      comment_up = #{commentUp,jdbcType=BIGINT},
+      comment_down = #{commentDown,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

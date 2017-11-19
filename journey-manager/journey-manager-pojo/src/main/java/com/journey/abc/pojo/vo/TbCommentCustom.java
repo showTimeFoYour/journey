@@ -22,7 +22,7 @@ public class TbCommentCustom extends TbCommentStatus{
 
     private Boolean tripState;
 
-    private Boolean appraise;
+    private Integer appraise;
     private Date tripTime;
 
     private String hotelName;
@@ -34,6 +34,7 @@ public class TbCommentCustom extends TbCommentStatus{
     private String placeName;
 
     private Date created;
+    private Date updated;
 
     public String getHotelName() {
         return hotelName;
@@ -59,7 +60,7 @@ public class TbCommentCustom extends TbCommentStatus{
         this.placeName = placeName;
     }
 
-    private Date updated;
+
 
 
 
@@ -95,14 +96,13 @@ public class TbCommentCustom extends TbCommentStatus{
         this.tripState = tripState;
     }
 
-    public Boolean getAppraise() {
+    public Integer getAppraise() {
         return appraise;
     }
 
-    public void setAppraise(Boolean appraise) {
+    public void setAppraise(Integer appraise) {
         this.appraise = appraise;
     }
-
 
     public Date getTripTime() {
         return tripTime;

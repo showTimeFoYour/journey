@@ -1,6 +1,7 @@
 package com.journey.abc.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -22,5 +23,10 @@ public class IndexAction {
            return "index";
     }
 
+    @RequestMapping("/{page}")
+    public String page(@PathVariable("page") String page) {
+
+        return page;
+    }
 
 }

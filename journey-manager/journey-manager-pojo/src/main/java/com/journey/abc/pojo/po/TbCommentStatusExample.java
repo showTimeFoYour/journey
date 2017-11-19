@@ -283,6 +283,126 @@ public class TbCommentStatusExample {
             addCriterion("comment_status not between", value1, value2, "commentStatus");
             return (Criteria) this;
         }
+
+        public Criteria andCommentUpIsNull() {
+            addCriterion("comment_up is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpIsNotNull() {
+            addCriterion("comment_up is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpEqualTo(Long value) {
+            addCriterion("comment_up =", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpNotEqualTo(Long value) {
+            addCriterion("comment_up <>", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpGreaterThan(Long value) {
+            addCriterion("comment_up >", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpGreaterThanOrEqualTo(Long value) {
+            addCriterion("comment_up >=", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpLessThan(Long value) {
+            addCriterion("comment_up <", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpLessThanOrEqualTo(Long value) {
+            addCriterion("comment_up <=", value, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpIn(List<Long> values) {
+            addCriterion("comment_up in", values, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpNotIn(List<Long> values) {
+            addCriterion("comment_up not in", values, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpBetween(Long value1, Long value2) {
+            addCriterion("comment_up between", value1, value2, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUpNotBetween(Long value1, Long value2) {
+            addCriterion("comment_up not between", value1, value2, "commentUp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownIsNull() {
+            addCriterion("comment_down is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownIsNotNull() {
+            addCriterion("comment_down is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownEqualTo(Long value) {
+            addCriterion("comment_down =", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownNotEqualTo(Long value) {
+            addCriterion("comment_down <>", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownGreaterThan(Long value) {
+            addCriterion("comment_down >", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownGreaterThanOrEqualTo(Long value) {
+            addCriterion("comment_down >=", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownLessThan(Long value) {
+            addCriterion("comment_down <", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownLessThanOrEqualTo(Long value) {
+            addCriterion("comment_down <=", value, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownIn(List<Long> values) {
+            addCriterion("comment_down in", values, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownNotIn(List<Long> values) {
+            addCriterion("comment_down not in", values, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownBetween(Long value1, Long value2) {
+            addCriterion("comment_down between", value1, value2, "commentDown");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentDownNotBetween(Long value1, Long value2) {
+            addCriterion("comment_down not between", value1, value2, "commentDown");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
