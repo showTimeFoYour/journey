@@ -11,6 +11,8 @@ public class TbCommentStatus {
 
     private Long commentDown;
 
+    private Byte commentState;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class TbCommentStatus {
 
     public void setCommentDown(Long commentDown) {
         this.commentDown = commentDown;
+    }
+
+    public Byte getCommentState() {
+        return commentState;
+    }
+
+    public void setCommentState(Byte commentState) {
+        this.commentState = commentState;
     }
 }

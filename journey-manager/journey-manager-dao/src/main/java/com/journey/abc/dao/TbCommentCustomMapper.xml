@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.journey.abc.dao.TbCommentCustomMapper">
     <sql id="base_list_hotel">
-s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
-h.user_id AS  userId,h.title as title,h.content as content,h.trip_state as tripState,
+s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown, s.comment_state as commentState,
+u.username AS  userName,h.title as title,h.content as content,h.trip_state as tripState,
 h.created as created,h.updated as updated,h.appraise as appraise,
  hl.name as hotelName
    </sql>
 
     <sql id="base_list_item">
-          s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
-        i.user_id AS userId, i.title as title, i.content as content,i.trip_state as tripState,
+          s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,s.comment_state as commentState,
+        u.username AS userName, i.title as title, i.content as content,i.trip_state as tripState,
         i.created as created,i.updated as updated, i.appraise as appraise,
         it.title as itemName
     </sql>
 
     <sql id="base_list_place">
-       s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,
-        p.user_id AS userId, p.title as title, p.content as content,p.trip_state as tripState,
+       s.comment_id as commentId,s.comment_status as commentStatus ,s.comment_up as commentUp, s.comment_down as commentDown,s.comment_state as commentState,
+        u.username AS userName, p.title as title, p.content as content,p.trip_state as tripState,
         p.created as created,p.updated as updated, p.appraise as appraise,
         pl.name as placeName
     </sql>
@@ -27,7 +27,8 @@ h.created as created,h.updated as updated,h.appraise as appraise,
             SELECT
             <include refid="base_list_hotel"/>
             from tb_comment_status s LEFT JOIN tb_hotle_comments h
-            on s.comment_id =h.id LEFT JOIN tb_hotel hl on h.hotel_id=hl.id where s.comment_status=1
+            on s.comment_id =h.id LEFT JOIN tb_hotel hl on h.hotel_id=hl.id LEFT JOIN tb_user u on u.id=h.user_id
+            where s.comment_status=1 and s.comment_state !=3
             LIMIT #{page.offset},#{page.rows}
 
     </select>
@@ -37,7 +38,8 @@ h.created as created,h.updated as updated,h.appraise as appraise,
         SELECT
         <include refid="base_list_item"/>
         FROM tb_comment_status s LEFT JOIN tb_item_comments i on s.comment_id=i.id LEFT JOIN tb_item AS it
-        ON i.item_id=it.id where s.comment_status=3
+        ON i.item_id=it.id LEFT JOIN tb_user u on u.id=i.user_id
+        where s.comment_status=3 and s.comment_state !=3
         LIMIT #{page.offset},#{page.rows}
 
     </select>
@@ -47,12 +49,13 @@ h.created as created,h.updated as updated,h.appraise as appraise,
         SELECT
         <include refid="base_list_place"/>
         FROM tb_comment_status s LEFT JOIN tb_place_comments p on s.comment_id=p.id LEFT JOIN tb_place AS pl
-        ON p.place_id=pl.id where s.comment_status=2
+        ON p.place_id=pl.id LEFT JOIN tb_user u on u.id=p.user_id
+        where s.comment_status=2 and s.comment_state !=3
         LIMIT #{page.offset},#{page.rows}
 
     </select>
 
     <select id="countComments" resultType="java.lang.Integer">
-        SELECT count(1) FROM  tb_comment_status s
+        SELECT count(1) FROM  tb_comment_status s WHERE s.comment_state !=3
     </select>
 </mapper>

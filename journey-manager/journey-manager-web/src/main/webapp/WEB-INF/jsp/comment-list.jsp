@@ -25,9 +25,9 @@
             </button>
         </div>
         <div>
-            <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">驳回</button>
 
-            <button onclick="down()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">发布</button>
+            <button onclick="down_comment()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">驳回</button>
+            <button onclick="remove_comment()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</button>
 
         </div>
 
@@ -38,8 +38,7 @@
 
 <table id="tb"></table>
 <script>
-
-    function up() {
+    function remove_comment() {
         var selections = $('#tb').datagrid('getSelections');
         //  console.log(selections);
         if (selections.length == 0) {
@@ -51,15 +50,16 @@
             var ids = [];
             for (var i = 0; i < selections.length; i++) {
                 //console.log(selections[i].status);
-                if(selections[i].status ==1){
-                    $.messager.alert('提示', '请不要选择已经发布的记录！');
-                    return;
-                }
-                ids.push(selections[i].id);
+                /*    if(selections[i].commentStatus ==2){
+                        $.messager.alert('提示', '请不要选择已经下架的记录！');
+                        return;
+                    }*/
+
+                ids.push(selections[i].commentId);
             }
             $.post(
                 //  //url:请求后台的哪个地址来进行处理，相当于url,String类型
-                'comments/release',
+                'comments/bacth',
                 //data:从前台提交哪些数据给后台处理，相当于data，Object类型
                 {'ids[]': ids},
                 //callback:后台处理成功的回调函数，相当于success，function类型
@@ -70,10 +70,9 @@
                 'json'
             );
         }
-
-
     }
-    function down() {
+
+    function down_comment() {
         var selections = $('#tb').datagrid('getSelections');
         //  console.log(selections);
         if (selections.length == 0) {
@@ -85,15 +84,16 @@
             var ids = [];
             for (var i = 0; i < selections.length; i++) {
                 //console.log(selections[i].status);
-                if(selections[i].commentStatus ==2){
-                    $.messager.alert('提示', '请不要选择已经下架的记录！');
+               if(selections[i].commentState ==2){
+                    $.messager.alert('提示', '请不要选择已经驳回的记录！');
                     return;
                 }
-                ids.push(selections[i].id);
+            debugger;
+                ids.push(selections[i].commentId);
             }
             $.post(
                 //  //url:请求后台的哪个地址来进行处理，相当于url,String类型
-                'comments/reject',
+                'comments/down',
                 //data:从前台提交哪些数据给后台处理，相当于data，Object类型
                 {'ids[]': ids},
                 //callback:后台处理成功的回调函数，相当于success，function类型
@@ -131,10 +131,10 @@
          *
          */
         columns: [[{field: 'ck', checkbox: true},
-            {field: 'commentId', title: '评论编号', width: 100},
-            {field: 'userId', title: '评论用户', width: 100},
+            {field: 'commentId', title: '评论编号', width: 90},
+            {field: 'userName', title: '评论用户', width: 90},
             {
-                field: 'commentStatus', title: '评论类型(前台)', width: 100,
+                field: 'commentStatus', title: '评论类型(前台)', width: 90,
                 formatter: function (value, row, index) {
 //                    console.group();
 //                    console.log(value);
@@ -158,9 +158,9 @@
                     }
                 }
             },
-            {field: 'title', title: '评论标题', width: 100},
-            {field: 'content', title: '评论内容', width: 100},
-            {field: 'tripState', title: '是否去过', width: 100,
+            {field: 'title', title: '评论标题', width: 90},
+            {field: 'content', title: '评论内容', width: 90},
+            {field: 'tripState', title: '是否去过', width: 90,
                 formatter: function (value, row, index) {
                 switch (value){
                     case true:
@@ -175,7 +175,7 @@
                 }
                 }
             },
-            {field: 'appraise', title: '评论星级', width: 100,
+            {field: 'appraise', title: '评论星级', width: 90,
                 formatter: function (value, row, index) {
                     switch (value) {
                         case 1:
@@ -202,9 +202,31 @@
                 }
             },
 
-            {field: 'hotelName', title: '酒店名称', width: 100},
-            {field: 'itemName', title: '订单名称', width: 100},
-            {field: 'placeName', title: '景点名称', width: 100},
+            {field: 'hotelName', title: '酒店名称', width: 80},
+            {field: 'itemName', title: '订单名称', width: 80},
+            {field: 'placeName', title: '景点名称', width: 80},
+            {field: 'commentUp', title: '点赞数', width: 70},
+            {field: 'commentDown', title: '点踩数', width: 70},
+            {
+                field: 'commentState', title: '状态', width: 100, formatter: function (value, row, index) {
+
+                switch (value) {
+                    case 1 :
+                        return "发布";
+                        break;
+                    case 2:
+                        return "驳回";
+                        break;
+                    case 3:
+                        return "删除";
+                        break;
+                    default:
+                        return "未知";
+                        break;
+                }
+
+            }
+            },
             {
                 field: 'created', title: '创建时间', width: 100, formatter: function (value, row, index) {
                 return moment(value).format('LL');

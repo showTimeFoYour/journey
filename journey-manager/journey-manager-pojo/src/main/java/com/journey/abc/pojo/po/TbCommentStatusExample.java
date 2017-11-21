@@ -403,6 +403,66 @@ public class TbCommentStatusExample {
             addCriterion("comment_down not between", value1, value2, "commentDown");
             return (Criteria) this;
         }
+
+        public Criteria andCommentStateIsNull() {
+            addCriterion("comment_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateIsNotNull() {
+            addCriterion("comment_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateEqualTo(Byte value) {
+            addCriterion("comment_state =", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateNotEqualTo(Byte value) {
+            addCriterion("comment_state <>", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateGreaterThan(Byte value) {
+            addCriterion("comment_state >", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateGreaterThanOrEqualTo(Byte value) {
+            addCriterion("comment_state >=", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateLessThan(Byte value) {
+            addCriterion("comment_state <", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateLessThanOrEqualTo(Byte value) {
+            addCriterion("comment_state <=", value, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateIn(List<Byte> values) {
+            addCriterion("comment_state in", values, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateNotIn(List<Byte> values) {
+            addCriterion("comment_state not in", values, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateBetween(Byte value1, Byte value2) {
+            addCriterion("comment_state between", value1, value2, "commentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStateNotBetween(Byte value1, Byte value2) {
+            addCriterion("comment_state not between", value1, value2, "commentState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
