@@ -85,7 +85,7 @@
             for (var i = 0; i < selections.length; i++) {
                 //console.log(selections[i].status);
                if(selections[i].commentState ==2){
-                    $.messager.alert('提示', '请不要选择已经驳回的记录！');
+                    $.messager.alert('提示', '请不要选择已经驳回的记录!！');
                     return;
                 }
             debugger;

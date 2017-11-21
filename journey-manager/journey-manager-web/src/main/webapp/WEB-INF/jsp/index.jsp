@@ -51,13 +51,12 @@
         </div>
         <div title="评论管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'comment-add'}">新增评论</li>
-                <li data-options="attributes:{'href':'comment-list'}">查询评论</li>
+                 <li data-options="attributes:{'href':'comment-list'}">查询评论</li>
             </ul>
         </div>
         <div title="游记管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'comment-list'}">查询游记</li>
+                <li data-options="attributes:{'href':'travelogue-list'}">查询游记</li>
             </ul>
         </div>
         <div title="用户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
