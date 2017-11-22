@@ -6,9 +6,10 @@
     <result column="travel_id" property="travelId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="whatday" property="whatday" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.journey.abc.pojo.po.TbTravelogueComment" extends="BaseResultMap" >
-    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,10 +70,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, travel_id, created, updated
+    id, travel_id, created, updated, whatday
   </sql>
   <sql id="Blob_Column_List" >
-    desc
+    description
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.journey.abc.pojo.po.TbTravelogueCommentExample" >
     select
@@ -124,9 +125,11 @@
   </delete>
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     insert into tb_travelogue_comment (id, travel_id, created, 
-      updated, desc)
+      updated, whatday, description
+      )
     values (#{id,jdbcType=BIGINT}, #{travelId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR})
+      #{updated,jdbcType=TIMESTAMP}, #{whatday,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     insert into tb_travelogue_comment
@@ -143,8 +146,11 @@
       <if test="updated != null" >
         updated,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="whatday != null" >
+        whatday,
+      </if>
+      <if test="description != null" >
+        description,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -160,8 +166,11 @@
       <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=LONGVARCHAR},
+      <if test="whatday != null" >
+        #{whatday,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,8 +195,11 @@
       <if test="record.updated != null" >
         updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.desc != null" >
-        desc = #{record.desc,jdbcType=LONGVARCHAR},
+      <if test="record.whatday != null" >
+        whatday = #{record.whatday,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -200,7 +212,8 @@
       travel_id = #{record.travelId,jdbcType=BIGINT},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
-      desc = #{record.desc,jdbcType=LONGVARCHAR}
+      whatday = #{record.whatday,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,7 +223,8 @@
     set id = #{record.id,jdbcType=BIGINT},
       travel_id = #{record.travelId,jdbcType=BIGINT},
       created = #{record.created,jdbcType=TIMESTAMP},
-      updated = #{record.updated,jdbcType=TIMESTAMP}
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      whatday = #{record.whatday,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,8 +241,11 @@
       <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=LONGVARCHAR},
+      <if test="whatday != null" >
+        whatday = #{whatday,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -238,14 +255,16 @@
     set travel_id = #{travelId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
-      desc = #{desc,jdbcType=LONGVARCHAR}
+      whatday = #{whatday,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.journey.abc.pojo.po.TbTravelogueComment" >
     update tb_travelogue_comment
     set travel_id = #{travelId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP}
+      updated = #{updated,jdbcType=TIMESTAMP},
+      whatday = #{whatday,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

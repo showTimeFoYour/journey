@@ -344,6 +344,66 @@ public class TbTravelogueCommentExample {
             addCriterion("updated not between", value1, value2, "updated");
             return (Criteria) this;
         }
+
+        public Criteria andWhatdayIsNull() {
+            addCriterion("whatday is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayIsNotNull() {
+            addCriterion("whatday is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayEqualTo(Integer value) {
+            addCriterion("whatday =", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayNotEqualTo(Integer value) {
+            addCriterion("whatday <>", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayGreaterThan(Integer value) {
+            addCriterion("whatday >", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayGreaterThanOrEqualTo(Integer value) {
+            addCriterion("whatday >=", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayLessThan(Integer value) {
+            addCriterion("whatday <", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayLessThanOrEqualTo(Integer value) {
+            addCriterion("whatday <=", value, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayIn(List<Integer> values) {
+            addCriterion("whatday in", values, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayNotIn(List<Integer> values) {
+            addCriterion("whatday not in", values, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayBetween(Integer value1, Integer value2) {
+            addCriterion("whatday between", value1, value2, "whatday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhatdayNotBetween(Integer value1, Integer value2) {
+            addCriterion("whatday not between", value1, value2, "whatday");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

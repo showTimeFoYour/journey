@@ -11,7 +11,9 @@ public class TbTravelogueComment {
 
     private Date updated;
 
-    private String desc;
+    private Integer whatday;
+
+    private String description;
 
     public Long getId() {
         return id;
@@ -45,11 +47,19 @@ public class TbTravelogueComment {
         this.updated = updated;
     }
 
-    public String getDesc() {
-        return desc;
+    public Integer getWhatday() {
+        return whatday;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setWhatday(Integer whatday) {
+        this.whatday = whatday;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }

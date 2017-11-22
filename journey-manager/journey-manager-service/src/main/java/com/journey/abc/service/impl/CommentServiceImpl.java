@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +38,11 @@ public class CommentServiceImpl implements CommentService {
             map.put("order",order);
           int total=  tbCommentCustomDao.countComments(map);
             result.setTotal(total);
-            List<TbCommentCustom>rows=tbCommentCustomDao.listCommentHotelByPage(map);
+            List<TbCommentCustom>rows=new ArrayList<>();
+            List<TbCommentCustom>  rowh=tbCommentCustomDao.listCommentHotelByPage(map);
             List<TbCommentCustom>rowi=tbCommentCustomDao.listCommentItemByPage(map);
             List<TbCommentCustom>rowp=tbCommentCustomDao.listCommentPlaceByPage(map);
+            rows.addAll(rowh);
             rows.addAll(rowi);
             rows.addAll(rowp);
 

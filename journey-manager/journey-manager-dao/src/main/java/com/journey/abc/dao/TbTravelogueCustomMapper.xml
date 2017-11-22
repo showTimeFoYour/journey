@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.journey.abc.dao.TbTravelogueCustomMapper">
+
+    <sql id="base_list_travelogue">
+  t.id as travelId, t.title as title ,u.username as userName,
+   tc.description as description,tc.created as created,tc.updated as updated,tc.whatday as whatday
+
+
+    </sql>
+    <select id="listTravelogueByPage" resultType="com.journey.abc.pojo.vo.TbTravelogueCustom">
+
+        SELECT
+        <include refid="base_list_travelogue"></include>
+from tb_travelogue_comment as tc LEFT JOIN tb_travelogue as t ON tc.travel_id=t.id
+LEFT JOIN tb_user u on u.id =t.user_id
+        where t.status !=3
+  LIMIT #{page.offset},#{page.rows}
+    </select>
+
+    <select id="countTravelogue" resultType="_int">
+
+      SELECT  count(1) FROM tb_travelogue t
+    </select>
+
+</mapper>
