@@ -31,10 +31,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="label">订单详情：</td>
+                <td class="label">具体人信息：</td>
                 <td>
-
-                    <textarea id="contectDesc" name="contectDesc" class="easyui-textbox" style="width: 100%; height: 30px" > ${item.contectDesc} </textarea>
+                    <textarea id="contectDesc" name="contectDesc" class="easyui-textbox" style="width: 100%; height: 30px" >
+                        ${item.contectDesc}
+                    </textarea>
                 </td>
             </tr>
 
@@ -66,6 +67,7 @@
           }
       });
     }
+
 
 </script>
 

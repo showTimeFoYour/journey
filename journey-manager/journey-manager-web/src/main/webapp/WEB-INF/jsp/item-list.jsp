@@ -26,9 +26,7 @@
 <table id="item_table"></table>
 
 <script>
-
-
-     //模糊查询
+    //模糊查询
     function searchForm()
     {
         $('#item_table').datagrid('load',{
@@ -36,7 +34,6 @@
             status:$('#status').combobox('getValue')
         })
     }
-
     function remove()
     {
         //获得已选中的行
@@ -71,7 +68,8 @@
             }
         });
     }
-    function cancel() {
+    function cancel()
+    {
         //获得已选中的行
         var selectRows = $('#item_table').datagrid('getSelections');
         console.log(selectRows);
@@ -146,7 +144,6 @@
                 );
             }
         });
-
     }
     function edit()
     {
@@ -185,15 +182,8 @@
             {field: 'id', title: '订单编号'},
             {field: 'title', title: '订单详情'},
             {field: 'price', title: '订单价格'},
-            {field: 'contectDesc', title: '详细说明'/*,formatter:function (value,row,index) {
-                console.log(value);
-                var json = JSON.j(value);
-                var array=[];
-                $.each(json,function (i,e) {
-                    array.push(e.params)
-                });
-                return array.join("/");
-            }*/},
+            {field: 'num', title: '人数'},
+            {field: 'contectDesc', title: '同行人信息'},
             {
                 field: 'created', title: '创建时间', formatter: function (value, row, index) {
                 return moment(value).format("LLL");

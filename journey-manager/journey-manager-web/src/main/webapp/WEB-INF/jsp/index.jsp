@@ -22,9 +22,7 @@
     <div id="menu" class="easyui-accordion">
         <div title="订单管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'item-add'}">新增订单</li>
                 <li data-options="attributes:{'href':'item-list'}">查询订单</li>
-                <li data-options="attributes:{'href':'item-param-list'}">规格参数</li>
             </ul>
         </div>
         <div title="旅行管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
