@@ -29,6 +29,9 @@ h.created as created,h.updated as updated,h.appraise as appraise,
             from tb_comment_status s LEFT JOIN tb_hotle_comments h
             on s.comment_id =h.id LEFT JOIN tb_hotel hl on h.hotel_id=hl.id LEFT JOIN tb_user u on u.id=h.user_id
             where s.comment_status=1 and s.comment_state !=3
+        <if test="query != null and query.title !=null and query.title !=''">
+            and h.title LIKE '%${query.title}%' or h.content  LIKE '%${query.title}%'
+        </if>
             LIMIT #{page.offset},#{page.rows}
 
     </select>
@@ -40,6 +43,9 @@ h.created as created,h.updated as updated,h.appraise as appraise,
         FROM tb_comment_status s LEFT JOIN tb_item_comments i on s.comment_id=i.id LEFT JOIN tb_item AS it
         ON i.item_id=it.id LEFT JOIN tb_user u on u.id=i.user_id
         where s.comment_status=3 and s.comment_state !=3
+        <if test="query != null and query.title !=null and query.title !=''">
+            and i.title LIKE '%${query.title}%' or i.content  LIKE '%${query.title}%'
+        </if>
         LIMIT #{page.offset},#{page.rows}
 
     </select>
@@ -51,6 +57,9 @@ h.created as created,h.updated as updated,h.appraise as appraise,
         FROM tb_comment_status s LEFT JOIN tb_place_comments p on s.comment_id=p.id LEFT JOIN tb_place AS pl
         ON p.place_id=pl.id LEFT JOIN tb_user u on u.id=p.user_id
         where s.comment_status=2 and s.comment_state !=3
+        <if test="query != null and query.title !=null and query.title !=''">
+            and p.title LIKE '%${query.title}%' or p.content  LIKE '%${query.title}%'
+        </if>
         LIMIT #{page.offset},#{page.rows}
 
     </select>

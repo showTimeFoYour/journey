@@ -5,7 +5,9 @@ import com.journey.abc.dto.Page;
 import com.journey.abc.dto.Result;
 import com.journey.abc.pojo.vo.TbCommentCustom;
 
+import com.journey.abc.pojo.vo.TbCommentQuery;
 import com.journey.abc.service.CommentService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,10 @@ public class CommentAction {
 
     @RequestMapping("commentsByPage")
     @ResponseBody
-    public Result<TbCommentCustom> commentsByPage(Page page, Order order) {
+    public Result<TbCommentCustom> commentsByPage(Page page, Order order, TbCommentQuery query) {
         Result<TbCommentCustom> result = null;
         try {
-            result = commentService.listCommentsByPage(page, order);
+            result = commentService.listCommentsByPage(page, order,query);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             e.printStackTrace();

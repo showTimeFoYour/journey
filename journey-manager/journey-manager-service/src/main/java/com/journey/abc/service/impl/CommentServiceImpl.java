@@ -8,6 +8,7 @@ import com.journey.abc.dto.Result;
 import com.journey.abc.pojo.po.TbCommentStatus;
 import com.journey.abc.pojo.po.TbCommentStatusExample;
 import com.journey.abc.pojo.vo.TbCommentCustom;
+import com.journey.abc.pojo.vo.TbCommentQuery;
 import com.journey.abc.service.CommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private TbCommentStatusMapper tbCommentStatusDao;
     @Override
-    public Result<TbCommentCustom> listCommentsByPage(Page page, Order order) {
+    public Result<TbCommentCustom> listCommentsByPage(Page page, Order order, TbCommentQuery query) {
         Result<TbCommentCustom> result=null;
 
 
@@ -36,15 +37,30 @@ public class CommentServiceImpl implements CommentService {
             Map<String,Object>map=new HashMap<>();
             map.put("page",page);
             map.put("order",order);
+            map.put("query",query);
           int total=  tbCommentCustomDao.countComments(map);
             result.setTotal(total);
             List<TbCommentCustom>rows=new ArrayList<>();
-            List<TbCommentCustom>  rowh=tbCommentCustomDao.listCommentHotelByPage(map);
-            List<TbCommentCustom>rowi=tbCommentCustomDao.listCommentItemByPage(map);
-            List<TbCommentCustom>rowp=tbCommentCustomDao.listCommentPlaceByPage(map);
-            rows.addAll(rowh);
-            rows.addAll(rowi);
-            rows.addAll(rowp);
+           if("1".equals(query.getStatus())){
+               List<TbCommentCustom>  rowh=tbCommentCustomDao.listCommentHotelByPage(map);
+               rows.addAll(rowh);
+           }
+          else if("2".equals(query.getStatus())){
+               List<TbCommentCustom>rowp=tbCommentCustomDao.listCommentPlaceByPage(map);
+               rows.addAll(rowp);
+            }
+          else  if("3".equals(query.getStatus())){
+               List<TbCommentCustom>rowi=tbCommentCustomDao.listCommentItemByPage(map);
+               rows.addAll(rowi);
+            }else {
+               List<TbCommentCustom> rowh = tbCommentCustomDao.listCommentHotelByPage(map);
+               List<TbCommentCustom> rowi = tbCommentCustomDao.listCommentItemByPage(map);
+               List<TbCommentCustom> rowp = tbCommentCustomDao.listCommentPlaceByPage(map);
+               rows.addAll(rowh);
+               rows.addAll(rowi);
+               rows.addAll(rowp);
+           }
+
 
             result.setRows(rows);
         } catch (Exception e) {
