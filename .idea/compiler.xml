@@ -12,6 +12,7 @@
         <module name="journey-manager-pojo" />
         <module name="journey-manager-service" />
         <module name="journey-manager-web" />
+        <module name="journey-protal-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +25,7 @@
       <module name="journey-manager-service" target="1.8" />
       <module name="journey-manager-web" target="1.8" />
       <module name="journey-parent" target="1.8" />
+      <module name="journey-protal-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
