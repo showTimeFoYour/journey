@@ -5,6 +5,7 @@ import com.journey.abc.dto.Page;
 import com.journey.abc.dto.Result;
 import com.journey.abc.pojo.vo.TbCommentCustom;
 import com.journey.abc.pojo.vo.TbTravelogueCustom;
+import com.journey.abc.pojo.vo.TbTravelogueQuery;
 import com.journey.abc.service.CommentService;
 import com.journey.abc.service.TravelogueService;
 import org.slf4j.Logger;
@@ -22,10 +23,10 @@ public class TravelogueAction {
 
     @RequestMapping("traveloguesByPage")
     @ResponseBody
-    public Result<TbTravelogueCustom> traveloguesByPage(Page page, Order order) {
+    public Result<TbTravelogueCustom> traveloguesByPage(Page page, Order order,TbTravelogueQuery query) {
         Result<TbTravelogueCustom> result = null;
         try {
-            result = travelogueService.listTravelogueByPage(page, order);
+            result = travelogueService.listTravelogueByPage(page, order,query);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             e.printStackTrace();

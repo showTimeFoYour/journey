@@ -11,16 +11,29 @@
 
         <div>
             <label>游记标题:</label>
-            <input class="easyui-textbox" type="text" id="title"/>
+            <input class="easyui-textbox" type="text" id="travelogue_title"/>
+            <label>评论类型：</label>
+            <select id="travelogue_status" class="easyui-combobox">
+                <option value="0">全部</option>
+                <option value="1">个人</option>
+                <option value="2">发布</option>
+                <option value="3">草稿</option>
 
+            </select>
 
-            <button type="button" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchForm()">
+            <button type="button" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchTravelogueForm()">
                 查询
             </button>
         </div>
+<div>
+    <button onclick="down_travelogue()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">
+        驳回
+    </button>
+    <button onclick="remove_travelogue()" class="easyui-linkbutton"
+            data-options="iconCls:'icon-remove',plain:true">删除
+    </button>
 
-
-
+</div>
     </div>
 
 </div>
@@ -77,7 +90,7 @@
                     $.messager.alert('提示', '请不要选择已经驳回的记录!！');
                     return;
                 }
-                debugger;
+
                 ids.push(selections[i].commentId);
             }
             $.post(
@@ -94,11 +107,11 @@
             );
         }
     }
-    function searchForm(){
+    function searchTravelogueForm(){
 
-        $('#tb').datagrid('load',{
-            title:$("#title").val(),
-            status:$('#comment_status').combobox("getValue")
+        $('#tb_travelogue').datagrid('load',{
+            title:$("#travelogue_title").val(),
+            status:$('#travelogue_status').combobox("getValue")
 
         });
 
@@ -134,7 +147,7 @@
                         return "发布";
                         break;
                     case 3:
-                        return "删除";
+                        return "草稿";
                         break;
                     default:
                         return "未知";

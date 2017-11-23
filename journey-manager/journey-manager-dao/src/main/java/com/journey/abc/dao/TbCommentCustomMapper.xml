@@ -65,6 +65,25 @@ h.created as created,h.updated as updated,h.appraise as appraise,
     </select>
 
     <select id="countComments" resultType="java.lang.Integer">
-        SELECT count(1) FROM  tb_comment_status s WHERE s.comment_state !=3
+        SELECT count(1) FROM  tb_comment_status s LEFT JOIN tb_place_comments p on s.comment_id=p.id
+        LEFT JOIN tb_item_comments i on s.comment_id=i.id
+        LEFT JOIN tb_hotle_comments h on s.comment_id =h.id
+
+        WHERE s.comment_state !=3
+       <choose>
+           <when test='query.status  == "1" and query != null and query.title !=null and query.title !="" '>
+               and h.title LIKE '%${query.title}%' or h.content  LIKE '%${query.title}%'
+           </when>
+           <when test='query.status == "2" and query != null and query.title !=null and query.title !="" '>
+               and p.title LIKE '%${query.title}%' or p.content  LIKE '%${query.title}%'
+           </when>
+           <when test='query.status == "3" and query != null and query.title !=null and query.title !="" '>
+               and i.title LIKE '%${query.title}%' or i.content  LIKE '%${query.title}%'
+           </when>
+            <otherwise></otherwise>
+
+       </choose>
+
+
     </select>
 </mapper>
