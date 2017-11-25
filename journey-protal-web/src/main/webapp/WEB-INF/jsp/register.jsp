@@ -26,7 +26,7 @@
                     <div class="input_outer">
                         <span class="u_user"></span>
                         <input name="username" id="username" class="text" style="color: #FFFFFF !important" type="text"
-                               placeholder="请输入昵称">
+                               placeholder="请输入昵称（3-10个字母、数字、下划线）">
                         <br> <span id="sp1"></span>
                     </div>
                     <%--<div><a><span id="sp1"></span></a>--%>
@@ -34,7 +34,7 @@
                         <span class="us_uer"></span>
                         <input name="upwd" id="upwd" class="text"
                                style="color: #FFFFFF !important; position:absolute; z-index:100;" value=""
-                               type="password" placeholder="请输入密码">
+                               type="password" placeholder="请输入密码（6-10个字母、数字、下划线）">
                         <br><br>
                         <span id="sp2"></span>
 
@@ -43,7 +43,7 @@
                         <span class="us_uer"></span>
                         <input name="reupwd" id="reupwd" class="text"
                                style="color: #FFFFFF !important; position:absolute; z-index:100;" value=""
-                               type="password" placeholder="请确认密码">
+                               type="password" placeholder="请确认密码（6-10个字母、数字、下划线）">
                         <br><br>
                         <span id="resp2"></span>
 
@@ -53,7 +53,7 @@
                     <div class="input_outer">
                         <span class="u_user"></span>
                         <input name="realname" id="realname" class="text" style="color: #FFFFFF !important" type="text"
-                               placeholder="请输入真实姓名">
+                               placeholder="请输入真实姓名（3-4个中文）">
                         <br> <span id="sp3"></span>
                     </div>
 
@@ -92,11 +92,11 @@
                     <%--<div class="mb2"><a class="act-but submit" type="submit" name="submit" style="color: #FFFFFF">登录</a></div>--%>
                     <table>
                         <tr align="center">
-                            <td><input class="input_oute submit" type="submit" name="submit1" value="注册"
+                            <td><input class=" submit" type="submit" name="submit1" value="注册"
                                        style="margin-right:20px;margin-left: 40px"/></td>
-                            <td><input class="input_oute submit" type="reset" name="reset" value="重置"
+                            <td><input class=" submit" type="reset" name="reset" value="重置"
                                        style="margin-right:20px"/></td>
-                            <td><input class="input_oute submit" type="button" name="button" value="返回"
+                            <td><input class=" submit" type="button" name="button" value="返回"
                                        onclick="history.back()"/></td>
                         </tr>
                     </table>
@@ -126,9 +126,9 @@
 //用户名
         $("#username").blur(function () {
             var un = $("#username").val();
-            var regexName = /^\w{6,10}$/;
+            var regexName = /^\w{3,10}$/;
             if (!regexName.test(un)) {
-                $("#sp1").html("输入用户名，格式为6-10个字母、数字、下划线").css('color', 'red');
+                $("#sp1").html("输入用户名，格式为3-10个字母、数字、下划线").css('color', 'red');
                 $("#username").focus();
             } else {
                 $("#sp1").html("").css('color', 'red');

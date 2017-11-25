@@ -59,8 +59,8 @@
         </div>
         <div title="用户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'user-list'}">添加用户</li>
-                <li data-options="attributes:{'href':'user-add'}">查询用户</li>
+                <%--<li data-options="attributes:{'href':'user-add'}">添加用户</li>--%>
+                <li data-options="attributes:{'href':'user-list'}">查询用户</li>
             </ul>
         </div>
     </div>

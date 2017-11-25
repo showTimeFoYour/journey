@@ -17,7 +17,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="journey-common" target="1.8" />
-      <module name="journey-dao" target="1.8" />
       <module name="journey-manager" target="1.8" />
       <module name="journey-manager-dao" target="1.8" />
       <module name="journey-manager-interface" target="1.8" />

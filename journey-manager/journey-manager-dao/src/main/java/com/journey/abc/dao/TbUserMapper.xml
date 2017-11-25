@@ -8,9 +8,9 @@
     <result column="realname" property="realname" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="gender" property="gender" jdbcType="BIT" />
+    <result column="gender" property="gender" jdbcType="TINYINT" />
     <result column="city_id" property="cityId" jdbcType="BIGINT" />
-    <result column="isAdmin" property="isadmin" jdbcType="BIT" />
+    <result column="isAdmin" property="isadmin" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -106,10 +106,12 @@
   <insert id="insert" parameterType="com.journey.abc.pojo.po.TbUser" >
     insert into tb_user (id, username, upwd, 
       realname, phone, email, 
-      gender, city_id, isAdmin)
+      gender, city_id, isAdmin
+      )
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
       #{realname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=BIT}, #{cityId,jdbcType=BIGINT}, #{isadmin,jdbcType=BIT})
+      #{gender,jdbcType=TINYINT}, #{cityId,jdbcType=BIGINT}, #{isadmin,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.journey.abc.pojo.po.TbUser" >
     insert into tb_user
@@ -162,13 +164,13 @@
         #{email,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        #{gender,jdbcType=BIT},
+        #{gender,jdbcType=TINYINT},
       </if>
       <if test="cityId != null" >
         #{cityId,jdbcType=BIGINT},
       </if>
       <if test="isadmin != null" >
-        #{isadmin,jdbcType=BIT},
+        #{isadmin,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -200,13 +202,13 @@
         email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null" >
-        gender = #{record.gender,jdbcType=BIT},
+        gender = #{record.gender,jdbcType=TINYINT},
       </if>
       <if test="record.cityId != null" >
         city_id = #{record.cityId,jdbcType=BIGINT},
       </if>
       <if test="record.isadmin != null" >
-        isAdmin = #{record.isadmin,jdbcType=BIT},
+        isAdmin = #{record.isadmin,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -221,9 +223,9 @@
       realname = #{record.realname,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=BIT},
+      gender = #{record.gender,jdbcType=TINYINT},
       city_id = #{record.cityId,jdbcType=BIGINT},
-      isAdmin = #{record.isadmin,jdbcType=BIT}
+      isAdmin = #{record.isadmin,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -247,13 +249,13 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        gender = #{gender,jdbcType=BIT},
+        gender = #{gender,jdbcType=TINYINT},
       </if>
       <if test="cityId != null" >
         city_id = #{cityId,jdbcType=BIGINT},
       </if>
       <if test="isadmin != null" >
-        isAdmin = #{isadmin,jdbcType=BIT},
+        isAdmin = #{isadmin,jdbcType=TINYINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -265,9 +267,9 @@
       realname = #{realname,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=BIT},
+      gender = #{gender,jdbcType=TINYINT},
       city_id = #{cityId,jdbcType=BIGINT},
-      isAdmin = #{isadmin,jdbcType=BIT}
+      isAdmin = #{isadmin,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

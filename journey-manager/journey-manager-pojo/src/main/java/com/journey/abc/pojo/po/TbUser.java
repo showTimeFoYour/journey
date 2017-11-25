@@ -13,11 +13,11 @@ public class TbUser {
 
     private String email;
 
-    private Boolean gender;
+    private Byte gender;
 
     private Long cityId;
 
-    private Boolean isadmin;
+    private Byte isadmin;
 
     public Long getId() {
         return id;
@@ -67,11 +67,11 @@ public class TbUser {
         this.email = email == null ? null : email.trim();
     }
 
-    public Boolean getGender() {
+    public Byte getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(Byte gender) {
         this.gender = gender;
     }
 
@@ -83,11 +83,11 @@ public class TbUser {
         this.cityId = cityId;
     }
 
-    public Boolean getIsadmin() {
+    public Byte getIsadmin() {
         return isadmin;
     }
 
-    public void setIsadmin(Boolean isadmin) {
+    public void setIsadmin(Byte isadmin) {
         this.isadmin = isadmin;
     }
 }

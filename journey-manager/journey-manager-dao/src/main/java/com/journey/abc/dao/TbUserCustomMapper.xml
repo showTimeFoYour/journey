@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.journey.abc.dao.TbUserCustomMapper" >
+
+  <sql id="Base_Column_List" >
+   id,username,upwd,realname,phone,email,gender,city_id AS cityId,isadmin
+  </sql>
+
+  <sql id="Where_Clause" >
+    <where>
+      isadmin != 3
+      <if test="query != null and query.username != null and query.username != '' ">
+        and username like '%${query.username}%'
+      </if>
+      <if test="query != null and query.gender != null and query.gender != 3 ">
+        and gender = #{query.gender}
+      </if>
+    </where>
+  </sql>
+
+  <select id="countItems" resultType="_int">
+    select count(1)
+    --       加了下面这个代码块，忘了加i,报错
+    from tb_user
+    <include refid="Where_Clause"/>
+  </select>
+
+  <!--在对应的dao接口里面，选择类名，选择Copy Reference,之后粘贴到这里，结果是权限定名-->
+  <select id="listUsersByPage"  resultType="com.journey.abc.pojo.po.TbUser">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM tb_user
+    <include refid="Where_Clause"/>
+
+     ORDER BY id DESC
+
+    LIMIT #{page.offset},#{page.rows}
+  </select>
+</mapper>

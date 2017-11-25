@@ -26,14 +26,14 @@
                     <div class="input_outer">
                         <span class="u_user" ></span>
                         <input name="username" id="username" class="text" style="color: #FFFFFF !important" type="text"
-                               placeholder="请输入账户"><br><span id="sp1"></span>
+                               placeholder="请输入昵称（3-10个字母、数字、下划线）"><br><span id="sp1"></span>
                     </div>
                     <%--<div><a><span id="sp1"></span></a>--%>
                     <div class="input_outer">
                         <span class="us_uer"></span>
                         <input name="upwd" id="upwd" class="text"
                                style="color: #FFFFFF !important; position:absolute; z-index:100;" value=""
-                               type="password" placeholder="请输入密码"><br><br>
+                               type="password" placeholder="请输入密码（6-10个字母、数字、下划线）"><br><br>
                         <span id="sp2"></span>
                     </div>
 
@@ -73,6 +73,36 @@
 <script>
     //ready函数
     $(function () {
+
+
+//用户名
+        $("#username").blur(function () {
+            var un = $("#username").val();
+            var regexName = /^\w{3,10}$/;
+            if (!regexName.test(un)) {
+                $("#sp1").html("输入用户名，格式为3-10个字母、数字、下划线").css('color', 'red');
+                $("#username").focus();
+            } else {
+                $("#sp1").html("").css('color', 'red');
+//            flag1=true;
+            }
+        });
+//密码
+        $("#upwd").blur(function () {
+            var pw = $("#upwd").val();
+            var regexPwd = /^\w{6,10}$/;
+            if (!regexPwd.test(pw)) {
+                $("#sp2").html("输入密码，格式为6-10个字母、数字、下划线").css('color', 'red');
+                $("#upwd").focus();
+            } else {
+                $("#sp2").html("").css('color', 'red');
+//            flag1=true;
+            }
+        });
+
+
+
+
         //submit里面一个回调函数
         //submit提交的时候，注册一个事件对象到e里面去
         $("#userDengLuForm").submit(function (e) {
