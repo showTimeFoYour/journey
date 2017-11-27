@@ -12,7 +12,9 @@
 
 <div data-options="region:'north'" style="height:70px;padding-left:20px;">
     <h2>途蜂旅游后台管理系统</h2>
-    <span ></span>
+    <h3 style="padding-right: 20px;">11</h3>
+    <button onclick="logoutAdmin()" class="easyui-linkbutton">注销</button>
+
 </div>
 
 <div data-options="region:'south'" style="padding:2px;background:#eee;">
@@ -28,29 +30,30 @@
         </div>
         <div title="旅行管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
             <div id="menu1" class="easyui-accordion">
-        <div title="景点管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:5px 0;line-height: 10px">
-            <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'place-add'}">新增景点</li>
-                <li data-options="attributes:{'href':'place-list'}">查询景点</li>
-            </ul>
-        </div>
-        <div title="酒店管理" data-options="iconCls:'icon-tip'" style="padding:5px 0; ">
-            <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'hotel-add'}">新增酒店</li>
-                <li data-options="attributes:{'href':'hotel-list'}">查询酒店</li>
-            </ul>
-        </div>
-        <div title="城市管理" data-options="iconCls:'icon-tip'" style="padding:5px 0;">
-            <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'city-add'}">新增城市</li>
-                <li data-options="attributes:{'href':'city-list'}">查询城市</li>
-            </ul>
-        </div>
-        </div>
+                <div title="景点管理" data-options="selected:true,iconCls:'icon-tip'"
+                     style="padding:5px 0;line-height: 10px">
+                    <ul class="easyui-tree">
+                        <li data-options="attributes:{'href':'place-add'}">新增景点</li>
+                        <li data-options="attributes:{'href':'place-list'}">查询景点</li>
+                    </ul>
+                </div>
+                <div title="酒店管理" data-options="iconCls:'icon-tip'" style="padding:5px 0; ">
+                    <ul class="easyui-tree">
+                        <li data-options="attributes:{'href':'hotel-add'}">新增酒店</li>
+                        <li data-options="attributes:{'href':'hotel-list'}">查询酒店</li>
+                    </ul>
+                </div>
+                <div title="城市管理" data-options="iconCls:'icon-tip'" style="padding:5px 0;">
+                    <ul class="easyui-tree">
+                        <li data-options="attributes:{'href':'city-add'}">新增城市</li>
+                        <li data-options="attributes:{'href':'city-list'}">查询城市</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div title="评论管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                 <li data-options="attributes:{'href':'comment-list'}">查询评论</li>
+                <li data-options="attributes:{'href':'comment-list'}">查询评论</li>
             </ul>
         </div>
         <div title="游记管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
@@ -60,8 +63,8 @@
         </div>
         <div title="用户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'user-list'}">添加用户</li>
-                <li data-options="attributes:{'href':'user-add'}">查询用户</li>
+                <li data-options="attributes:{'href':'user-add'}">添加用户</li>
+                <li data-options="attributes:{'href':'user-list'}">查询用户</li>
             </ul>
         </div>
     </div>
@@ -72,7 +75,7 @@
 <div data-options="region:'center'" style="background:#eee;">
     <div id="tab" class="easyui-tabs" data-options="fit:true">
         <div title="欢迎页面" style="padding:20px;">
-             欢迎${session_user.username}来到途蜂旅游后台管理系统
+            欢迎${session_user.username}来到途蜂旅游后台管理系统
             <img src="#">
         </div>
     </div>
@@ -94,6 +97,26 @@
 
 <script>
     ddshop.registerMenuEvent();
+
+    function logoutAdmin() {
+        $.messager.confirm('确认注销', '确认注销嘛?', function (r) {
+            if (r) {
+                $.post(
+                    'useradmin/logout',
+                    function (data) {
+                        if (data > 0) {
+                            location.href = '${pageContext.request.contextPath}/login_admin';
+                        }
+
+                    },
+                    //返回数据类型
+                    'json'
+                );
+            }
+        });
+    }
+
+
 </script>
 </body>
 </html>

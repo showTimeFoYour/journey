@@ -80,6 +80,7 @@
                     <!-- 社区下拉面板 end -->
                 </li>
                 <li class="head-nav-app" data-cs-p="app"><a href="http://www.mafengwo.cn/app/intro/gonglve.php" title="APP">APP</a></li>
+                <a href="login">去登录</a>&nbsp;<a href="register">去注册</a>
             </ul>
             <div class="head-search" data-online="1">
                 <div class="head-search-wrapper">

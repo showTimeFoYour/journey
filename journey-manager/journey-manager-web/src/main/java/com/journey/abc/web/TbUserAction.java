@@ -17,6 +17,17 @@ public class TbUserAction {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private TbUserService userService;
+
+    @RequestMapping("useradmin/logout")
+    @ResponseBody
+    public int logout(HttpServletRequest request){
+        int i=0;
+        HttpSession session = request.getSession();
+
+        session.removeAttribute("session_user");
+        i+=1;
+        return i;
+    }
 @RequestMapping("useradmin/login")
 @ResponseBody
     public  String login(TbUser tbUser, HttpServletRequest request){
@@ -29,7 +40,7 @@ public class TbUserAction {
             }else {
 
                 TbUser findUser= userService.getByUserName(tbUser);
-                if(tbUser.getUsername().equals(findUser.getUsername())&&tbUser.getUpwd().equals(findUser.getUpwd())){
+                if(findUser !=null&&tbUser.getUsername().equals(findUser.getUsername())&&tbUser.getUpwd().equals(findUser.getUpwd())){
                     mess="3";//该用户为管理员
                     HttpSession session = request.getSession();
                     session.setAttribute("session_user",findUser);

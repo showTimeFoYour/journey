@@ -80,18 +80,18 @@
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control" placeholder="用户名" name="username" id="username" value="${username}" />
-															<i class="ace-icon fa fa-user"></i>
+                                                            <i class="ace-icon fa fa-user"><span id="sn"></span></i>
 														</span>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" class="form-control" placeholder="密码" name="upwd" id="upwd" value="${upwd}" />
-															<i class="ace-icon fa fa-lock"></i>
+                                                            <i class="ace-icon fa fa-lock"><span id="sp"></span></i>
 														</span>
                                             </label>
 
-                                            <div class="space"></div>
+                                            <div class="space"><span id="snp"></span></div>
 
                                             <div class="clearfix">
                                                 <label class="inline">
@@ -318,10 +318,17 @@ function loginform(){
         },
         success:function (data) {
 
-            if (data > 0) {
-
-
-
+            if (data==0) {
+                $("#sn").html("用户名不能为空");
+            }
+            if (data==1) {
+                $("#sp").html("密码不能为空");
+            }
+            if (data==2) {
+                $("#snp").html("用户名密码错误");
+            }
+            if (data==3) {
+                location.href='${pageContext.request.contextPath}';
             }
         }
 
