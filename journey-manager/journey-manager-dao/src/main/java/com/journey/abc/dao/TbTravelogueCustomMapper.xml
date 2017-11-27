@@ -3,24 +3,56 @@
 <mapper namespace="com.journey.abc.dao.TbTravelogueCustomMapper">
 
     <sql id="base_list_travelogue">
-  t.id as travelId, t.title as title ,u.username as userName,
+  t.id as travelId, t.title as title ,u.username as userName,t.status as statu,
    tc.description as description,tc.created as created,tc.updated as updated,tc.whatday as whatday
 
+
+    </sql>
+    <sql id="when_status">
+        <choose>
+            <when test='query.status  == "1" and query != null and query.title !=null and query.title !="" '>
+                and h.title LIKE '%${query.title}%' or h.content  LIKE '%${query.title}%'
+            </when>
+            <when test='query.status == "2" and query != null and query.title !=null and query.title !="" '>
+                and p.title LIKE '%${query.title}%' or p.content  LIKE '%${query.title}%'
+            </when>
+            <when test='query.status == "3" and query != null and query.title !=null and query.title !="" '>
+                and i.title LIKE '%${query.title}%' or i.content  LIKE '%${query.title}%'
+            </when>
+            <otherwise></otherwise>
+
+        </choose>
 
     </sql>
     <select id="listTravelogueByPage" resultType="com.journey.abc.pojo.vo.TbTravelogueCustom">
 
         SELECT
         <include refid="base_list_travelogue"></include>
-from tb_travelogue_comment as tc LEFT JOIN tb_travelogue as t ON tc.travel_id=t.id
-LEFT JOIN tb_user u on u.id =t.user_id
-        where t.status !=3
-  LIMIT #{page.offset},#{page.rows}
+       from tb_travelogue_comment as tc LEFT JOIN tb_travelogue as t ON tc.travel_id=t.id
+         LEFT JOIN tb_user u on u.id =t.user_id
+        <where>t.status != 4
+            <if test="query != null and query.title !=null and query.title !=''">
+                and t.title LIKE '%${query.title}%'
+            </if>
+            <if test='query != null and query.status !=null and query.status != "0" '>
+                and  t.status = #{query.status}
+            </if>
+        </where>
+    LIMIT #{page.offset},#{page.rows}
     </select>
 
     <select id="countTravelogue" resultType="_int">
 
       SELECT  count(1) FROM tb_travelogue t
+
+      <where>t.status != 4
+          <if test="query != null and query.title != null and query.title !=''">
+              and t.title LIKE '%${query.title}%'
+          </if>
+          <if test="query != null and query.status != null and query.status !=0">
+              and  t.status = #{query.status}
+          </if>
+      </where>
     </select>
 
 </mapper>

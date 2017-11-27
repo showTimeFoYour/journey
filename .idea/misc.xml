@@ -3,6 +3,8 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/journey-manager/journey-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/journey-protal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/journey-search-web" />
+    <file type="web" url="file://$PROJECT_DIR$/jourrney-search-web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -10,6 +12,15 @@
         <option value="$PROJECT_DIR$/journey-parent/pom.xml" />
       </list>
     </option>
+
+
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/journey-manager/journey-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/jourrney-search-web/pom.xml" />
+      </set>
+    </option>
+
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

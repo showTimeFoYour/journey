@@ -11,6 +11,8 @@
         <module>../journey-common</module>
         <module>../journey-manager</module>
         <module>../journey-protal-web</module>
+
+        <module>../journey-search-web</module>
     </modules>
     <packaging>pom</packaging>
 

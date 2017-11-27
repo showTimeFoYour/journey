@@ -11,7 +11,8 @@
 <body class="easyui-layout">
 
 <div data-options="region:'north'" style="height:70px;padding-left:20px;">
-    <h2>XX旅游后台管理系统</h2>
+    <h2>途蜂旅游后台管理系统</h2>
+    <span ></span>
 </div>
 
 <div data-options="region:'south'" style="padding:2px;background:#eee;">
@@ -71,7 +72,7 @@
 <div data-options="region:'center'" style="background:#eee;">
     <div id="tab" class="easyui-tabs" data-options="fit:true">
         <div title="欢迎页面" style="padding:20px;">
-             欢迎来到XX旅行后台管理系统
+             欢迎${session_user.username}来到途蜂旅游后台管理系统
             <img src="#">
         </div>
     </div>

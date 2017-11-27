@@ -14,7 +14,7 @@
             <input class="easyui-textbox" type="text" id="title"/>
 
             <label>评论类型：</label>
-            <select id="comment_status" class="easyui-combobox">
+            <select id="comment_status" class="easyui-combobox" >
                 <option value="0">全部</option>
                 <option value="1">酒店</option>
                 <option value="2">景点</option>
@@ -26,8 +26,12 @@
         </div>
         <div>
 
-            <button onclick="down_comment()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">驳回</button>
-            <button onclick="remove_comment()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</button>
+            <button onclick="down_comment()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">
+                驳回
+            </button>
+            <button onclick="remove_comment()" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-remove',plain:true">删除
+            </button>
 
         </div>
 
@@ -46,29 +50,33 @@
             $.messager.alert('提示', '请至少选中一条记录！');
             return;
         }
-        else{
-            var ids = [];
-            for (var i = 0; i < selections.length; i++) {
-                //console.log(selections[i].status);
-                /*    if(selections[i].commentStatus ==2){
-                        $.messager.alert('提示', '请不要选择已经下架的记录！');
-                        return;
-                    }*/
+        else {
+            $.messager.confirm('确认删除', '确认删除记录?', function (r) {
+                if (r) {
+                    var ids = [];
+                    for (var i = 0; i < selections.length; i++) {
+                        //console.log(selections[i].status);
+                        /*    if(selections[i].commentStatus ==2){
+                                $.messager.alert('提示', '请不要选择已经下架的记录！');
+                                return;
+                            }*/
 
-                ids.push(selections[i].commentId);
-            }
-            $.post(
-                //  //url:请求后台的哪个地址来进行处理，相当于url,String类型
-                'comments/bacth',
-                //data:从前台提交哪些数据给后台处理，相当于data，Object类型
-                {'ids[]': ids},
-                //callback:后台处理成功的回调函数，相当于success，function类型
-                function (data) {
-                    $("#tb").datagrid("reload");
-                },
-                //返回数据类型
-                'json'
-            );
+                        ids.push(selections[i].commentId);
+                    }
+                    $.post(
+                        //  //url:请求后台的哪个地址来进行处理，相当于url,String类型
+                        'comments/bacth',
+                        //data:从前台提交哪些数据给后台处理，相当于data，Object类型
+                        {'ids[]': ids},
+                        //callback:后台处理成功的回调函数，相当于success，function类型
+                        function (data) {
+                            $("#tb").datagrid("reload");
+                        },
+                        //返回数据类型
+                        'json'
+                    );
+                }
+            });
         }
     }
 
@@ -80,15 +88,15 @@
             $.messager.alert('提示', '请至少选中一条记录！');
             return;
         }
-        else{
+        else {
             var ids = [];
             for (var i = 0; i < selections.length; i++) {
                 //console.log(selections[i].status);
-               if(selections[i].commentState ==2){
+                if (selections[i].commentState == 2) {
                     $.messager.alert('提示', '请不要选择已经驳回的记录!！');
                     return;
                 }
-            debugger;
+                debugger;
                 ids.push(selections[i].commentId);
             }
             $.post(
@@ -105,11 +113,12 @@
             );
         }
     }
-    function searchForm(){
 
-        $('#tb').datagrid('load',{
-            title:$("#title").val(),
-            status:$('#comment_status').combobox("getValue")
+    function searchForm() {
+
+        $('#tb').datagrid('load', {
+            title: $("#title").val(),
+            status: $('#comment_status').combobox("getValue")
 
         });
 
@@ -125,7 +134,7 @@
         fit: true,//调整面板屏幕
         pageSize: 10, //初始分页列表大小
         pageList: [10, 30, 50],
-        toolbar:'#comm-toolbar',
+        toolbar: '#comm-toolbar',
         /**
          * columns 工具栏
          *
@@ -160,22 +169,24 @@
             },
             {field: 'title', title: '评论标题', width: 90},
             {field: 'content', title: '评论内容', width: 90},
-            {field: 'tripState', title: '是否去过', width: 90,
+            {
+                field: 'tripState', title: '是否去过', width: 90,
                 formatter: function (value, row, index) {
-                switch (value){
-                    case true:
-                        return '去过';
-                        break;
-                    case false:
-                        return '未去过';
-                        break;
-                    default:
-                        return '未知';
-                        break;
-                }
+                    switch (value) {
+                        case true:
+                            return '去过';
+                            break;
+                        case false:
+                            return '未去过';
+                            break;
+                        default:
+                            return '未知';
+                            break;
+                    }
                 }
             },
-            {field: 'appraise', title: '评论星级', width: 90,
+            {
+                field: 'appraise', title: '评论星级', width: 90,
                 formatter: function (value, row, index) {
                     switch (value) {
                         case 1:

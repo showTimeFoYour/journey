@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/journey-manager/journey-manager-web/journey-manager-web.iml" filepath="$PROJECT_DIR$/journey-manager/journey-manager-web/journey-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/journey-parent/journey-parent.iml" filepath="$PROJECT_DIR$/journey-parent/journey-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/journey-protal-web/journey-protal-web.iml" filepath="$PROJECT_DIR$/journey-protal-web/journey-protal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journey-search-web/journey-search-web.iml" filepath="$PROJECT_DIR$/journey-search-web/journey-search-web.iml" />
     </modules>
   </component>
 </project>
