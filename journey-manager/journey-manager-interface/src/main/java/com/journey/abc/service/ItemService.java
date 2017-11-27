@@ -33,4 +33,6 @@ public interface ItemService {
 
     //修改订单
     int updateItemById(TbItem item);
+     //添加订单
+    int saveItems(TbItem tbItem);
 }

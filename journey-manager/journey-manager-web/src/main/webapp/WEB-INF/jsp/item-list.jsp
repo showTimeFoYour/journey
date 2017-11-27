@@ -17,7 +17,7 @@
         <button onclick="searchForm()" type="button" class="easyui-linkbutton">搜索</button>
     </div>
     <div>
-        <button onclick="edit()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</button>
+       <%-- <button onclick="edit()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</button>--%>
         <button onclick="remove()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</button>
         <button onclick="cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">取消订单</button>
         <button onclick="confirm()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">确认订单</button>
@@ -145,7 +145,8 @@
             }
         });
     }
-    function edit()
+    //编辑订单模块
+   /* function edit()
     {
         var selectRows = $('#item_table').datagrid('getSelections');
         if(selectRows.length == 0)
@@ -163,7 +164,7 @@
         console.log(id)
         ddshop.addTabs("修改订单","item/edit?id="+id);
 
-    }
+    }*/
 
     $("#item_table").datagrid({
        toolbar:'#toolbarItem',
@@ -183,20 +184,35 @@
             {field: 'title', title: '订单详情'},
             {field: 'price', title: '订单价格'},
             {field: 'num', title: '人数'},
-            {field: 'contectDesc', title: '同行人信息'},
+            {field: 'contectDesc', title: '同行人姓名',formatter:function (value,row,index) {
+              /*  var jsonObj = JSON.parse(value);
+                var array=[];
+
+                //JSON的遍历
+                $.each(jsonObj,function (i,e) {
+                   array.push(e.name);
+                   array.push(e.phone);
+                });*/
+                var jsonObj = JSON.parse(value);
+                var array=[];
+                $.each(jsonObj,function (i,e) {
+                    array.push("姓名:"+e.text);
+                    array.push("电话:"+e.group);
+                });
+                return array.join(",");
+            }},
             {
                 field: 'created', title: '创建时间', formatter: function (value, row, index) {
-                return moment(value).format("LLL");
+                return moment(value).format("LL");
             }
             },
             {
                 field: 'start', title: '出发时间', formatter: function (value, row, index) {
-                return moment(value).format("LLL");
+                return moment(value).format("LL");
             }
             },
             {field: 'statusName', title: '状态(后台)'},
             {field: 'userName', title: '订单所属用户'}
-
         ]]
     });
 

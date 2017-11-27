@@ -65,7 +65,6 @@
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
-          <element id="library" level="project" name="Maven: com.baidu:ueditor:1.1.2" />
           <element id="library" level="project" name="Maven: org.json:json:20160212" />
         </element>
       </element>

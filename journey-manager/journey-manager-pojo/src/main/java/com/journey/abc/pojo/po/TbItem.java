@@ -1,5 +1,7 @@
 package com.journey.abc.pojo.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class TbItem {
@@ -13,6 +15,7 @@ public class TbItem {
 
     private Integer status;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date start;
 
     private Date created;

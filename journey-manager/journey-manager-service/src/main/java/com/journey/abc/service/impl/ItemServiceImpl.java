@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +83,11 @@ public class ItemServiceImpl implements ItemService {
         return i;
     }
 
+    /**
+     * 取消订单
+     * @param ids
+     * @return
+     */
     @Override
     public int cancelItemsByIds(List<Long> ids) {
 
@@ -104,7 +110,11 @@ public class ItemServiceImpl implements ItemService {
         return i;
     }
 
-
+    /**
+     * 确认订单
+     * @param ids
+     * @return
+     */
     @Override
     public int confirmItemsByIds(List<Long> ids) {
 
@@ -148,6 +158,11 @@ public class ItemServiceImpl implements ItemService {
         return item;
     }
 
+    /**
+     * 修改信息
+     * @param item
+     * @return
+     */
     @Override
     public int updateItemById(TbItem item) {
 
@@ -167,5 +182,27 @@ public class ItemServiceImpl implements ItemService {
             e.printStackTrace();
         }
         return i;
+    }
+
+    /**
+     * 新增订单模块
+     */
+    @Override
+    public int saveItems(TbItem tbItem) {
+
+        int  i = 0;
+        try {
+            //新增订单
+            tbItem.setStatus(0);
+            tbItem.setHotelId(1L);
+            tbItem.setCreated(new Date());
+            i =itemDao.insertSelective(tbItem);
+
+        }catch (Exception e)
+        {
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+         return i;
     }
 }
