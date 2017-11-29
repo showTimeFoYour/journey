@@ -103,6 +103,23 @@
             }
         });
     }
+    function isJSON(str) {
+        if (typeof(str) == 'string') {
+            try {
+                var obj=JSON.parse(str);
+                if(str.indexOf('{')>-1){
+                    return true;
+                }else{
+                    return false;
+                }
+
+            } catch(e) {
+                console.log(e);
+                return false;
+            }
+        }
+        return false;
+    }
 
     function confirm()
     {
@@ -185,19 +202,18 @@
             {field: 'price', title: '订单价格'},
             {field: 'num', title: '人数'},
             {field: 'contectDesc', title: '同行人姓名',formatter:function (value,row,index) {
-              /*  var jsonObj = JSON.parse(value);
-                var array=[];
 
-                //JSON的遍历
-                $.each(jsonObj,function (i,e) {
-                   array.push(e.name);
-                   array.push(e.phone);
-                });*/
+                if(!isJSON(value))
+                {
+                    return value;
+                }
+                console.log(value);
+                console.log(typeof (value))
                 var jsonObj = JSON.parse(value);
                 var array=[];
                 $.each(jsonObj,function (i,e) {
-                    array.push("姓名:"+e.text);
-                    array.push("电话:"+e.group);
+                    array.push(e.text);
+                    array.push(e.group);
                 });
                 return array.join(",");
             }},

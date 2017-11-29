@@ -28,7 +28,6 @@ public class ItemAction {
         }
         if(tbItem != null)
             i =itemService.saveItems(tbItem);
-
        if(i > 0)
        {
            return  "successSubmit";

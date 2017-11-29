@@ -23,19 +23,19 @@
         <div class="header-wrap clearfix">
             <ul class="head-nav" data-cs-t="headnav" id="j_head_nav1">
 
-                <li class="head-nav-place" data-cs-p="mdd">
+                <li class="head-nav-place" >
                     <a href="#" title="订单信息">订单信息页</a>
                 </li>
             </ul>
 
-            <ul class="head-nav" data-cs-t="headnav" id="u1">
+            <ul class="head-nav"  id="u1">
                 <li class="head-nav-index" data-cs-p="index">
-                    <a href="#">首页</a>
+                    <a href="${pageContext.request.contextPath}/">首页</a>
                 </li>
-                <li class="head-nav-place" data-cs-p="mdd">
+                <li class="head-nav-place" >
                     <a href="#" title="目的地">目的地</a>
                 </li>
-                <li class="head-nav-gonglve" data-cs-p="gonglve">
+                <li class="head-nav-gonglve" >
                     <a href="#" title="旅游攻略">旅游攻略</a>
                 </li>
                 <li class="head-nav-sales head-nav-dropdown _j_sales_nav_show" id="_j_nav_sales" data-cs-p="sales">
@@ -151,6 +151,28 @@
 </script>
 
 </div>
+<style>
+
+
+
+    input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
+    ::-webkit-datetime-edit { padding: 1px; background: url(../selection.gif); }
+    ::-webkit-datetime-edit-fields-wrapper { background-color: #eee; }
+    ::-webkit-datetime-edit-text { color: #4D90FE; padding: 0 .3em; }
+    ::-webkit-datetime-edit-year-field { color: purple; }
+    ::-webkit-datetime-edit-month-field { color: blue; }
+    ::-webkit-datetime-edit-day-field { color: green; }
+    ::-webkit-inner-spin-button { visibility: hidden; }
+    ::-webkit-calendar-picker-indicator {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        box-shadow: inset 0 1px #fff, 0 1px #eee;
+        background-color: #eee;
+        background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+        color: #666;
+
+</style>
+
 <form  id="order" method="post"  action="${pageContext.request.contextPath}/item/add" onsubmit="return  checkForm();">
 <div class="wrapper">
     <div class="order-cont clearfix">
@@ -168,8 +190,8 @@
                     </div>
                 </div>
                 <div class="user-int clearfix">
-                    <div class="form-sec flt1"><label for="template_3">电话</label>
-                        <input type="text" name="phone" class="template-field" placeholder="电话" data-title="电话信息" data-helper="确认电话正确" id="template_3" data-key="name_en" data-parentid="19" value="" data-rule="12">
+                    <div class="form-sec flt1"><label for="phone">电话</label>
+                        <input type="text" name="phone" class="template-field" placeholder="电话" data-title="电话信息" data-helper="确认电话正确" id="phone"  data-parentid="19" value="" data-rule="12">
                         <span id="msg2"></span>
                     </div>
                 </div>
@@ -178,29 +200,29 @@
                 <h2><i class="_j_step_num">2</i>订单信息（<span>具体订单信息</span>）</h2>
                 <div class="user-int clearfix">
                     <div class="form-sec flt1" style="clear: both">
-                        <label for="base_name">订单标题</label>
-                        <input id="base_name" name ="title" id="title" type="text" class="bord-red"  value="" data-required="1" data-title="订单标题">
+                        <label for="title">订单标题</label>
+                        <input id="title" name ="title" id="title" type="text" class="bord-red"  value="" data-required="1" data-title="订单标题">
                         <span id="msg3"></span>
                     </div>
                     <div class="form-sec flt1" style="clear: both">
-                        <label for="base_price">人数</label>
+                        <label for="num">人数</label>
                         <div class="parentCls">
-                            <input data-E id="base_num" name="num" id="num" type="text" class="bord-red" placeholder="请填写人数" value="" data-required="1" data-title="人数">
+                            <input data-E  name="num" id="num" type="text" class="bord-red" placeholder="请填写人数" value="" data-required="1" data-title="人数">
                             <span id="msg4"></span>
                         </div>
 
                     </div>
                     <div class="ver-code clearfix">
                         <p class="form-sec flt1">
-                            <label for="base_price">价格</label>
-                            <input id="base_price" name="price" id="price" type="text" placeholder="价格" value="" data-required="1" data-title="价格">
+                            <label for="price">价格</label>
+                            <input  name="price" id="price" type="text" placeholder="价格" value="" data-required="1" data-title="价格">
                             <span id="msg5"></span>
                         </p>
                     </div>
                    <div class="ver-code clearfix">
                         <p class="form-sec flt1">
-                            <label for="base_price">出发日期</label>
-                            <input id="start" name="start" id="date" type="date" placeholder="" value="" data-required="1" data-title="出发日期" >
+                            <label for="start">出发日期</label>
+                            <input id="start" name="start" type="date" placeholder="" value="" data-required="1" data-title="出发日期" >
                             <span id="msg6"></span>
                         </p>
                     </div>
@@ -218,7 +240,6 @@
 
 <script>
 function  checkForm() {
-
       var test= confirm("确认提交?")
       if(test)
       {
@@ -240,7 +261,16 @@ function  checkForm() {
           }
           else
           {
-              $("#msg2").html("");
+                var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+                if (!myreg.test(phone)) {
+                   console.log(myreg.test(phone)) ;
+                  $("#msg2").html("电话格式不正确");
+                   return false;
+                } else {
+                  $("#msg2").html("");
+                  return true;
+                }
+
           }
           var title = $("#title").val();
           if(title == '' && title == null)
@@ -281,8 +311,6 @@ function  checkForm() {
       {
           return false;
       }
-
-
 }
 
 

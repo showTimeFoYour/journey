@@ -1,16 +1,9 @@
 package com.journey.abc.dao;
 
-import com.journey.abc.pojo.po.TbCity;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml"})
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:spring/spring-dao.xml"})*/
 public class TbCityMapperTest {
-    @Autowired
+  /*  @Autowired
     private TbCityMapper TbCityDao;
 
     @Test
@@ -18,5 +11,5 @@ public class TbCityMapperTest {
         TbCity city=TbCityDao.selectByPrimaryKey(1L);
         System.out.println(city);
     }
-
+*/
 }

@@ -12,19 +12,17 @@
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
-支付界面
+
 <form  id="form1" action="${pageContext.request.contextPath}/index">
-    <input type="submit" value="确认支付">
+    <input type="submit" value="返回主页">
 </form>
 
 <script>
 
 $("#form1").submit(function(){
-
-     var i= confirm("确认支付?")
+     var i= confirm("确认返回主页?")
     if(i)
     {
-        alert("支付成功")
         return true;
     }
 
