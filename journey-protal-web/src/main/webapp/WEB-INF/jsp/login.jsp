@@ -90,11 +90,11 @@
 //密码
         $("#upwd").blur(function () {
             var pw = $("#upwd").val();
-            var regexPwd = /^\w{6,10}$/;
+            var regexPwd = /^\w{0,10}$/;
             if (!regexPwd.test(pw)) {
-                $("#sp2").html("输入密码，格式为6-10个字母、数字、下划线").css('color', 'red');
+             /*   $("#sp2").html("输入密码，格式为6-10个字母、数字、下划线").css('color', 'red');
                 $("#upwd").focus();
-            } else {
+          */  } else {
                 $("#sp2").html("").css('color', 'red');
 //            flag1=true;
             }

@@ -42,8 +42,6 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-codec.version>1.9</commons-codec.version>
         <baidu-ueditor.version>1.1.2</baidu-ueditor.version>
-
-
         <commons-net.version>3.3</commons-net.version>
         <jsqlparser.version>0.9.1</jsqlparser.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
@@ -132,6 +130,10 @@
                 <artifactId>commons-net</artifactId>
                 <version>${commons-net.version}</version>
             </dependency>
+
+
+
+
             <!-- Json处理工具包，Jackson -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -322,6 +324,7 @@
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
             </dependency>
+
 
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.journey.abc.dao.TbPlaceCustomMapper">
+  <sql id="base_list_place">
+    id,name,image,city_id as cityId,sellpoint,price,param,status
+  </sql>
+
+  <sql id="Where_Clause" >
+    <where>
+      <if test="query != null and query.title != null and query.title != '' ">
+        and i.name like '%${query.title}%'
+      </if>
+    </where>
+  </sql>
+
+  <select id="listPlaceByPage" resultType="com.journey.abc.pojo.po.TbPlace">
+    SELECT
+    <include refid="base_list_place"/>
+    from tb_place i
+    <include refid="Where_Clause"/>
+    LIMIT #{page.offset},#{page.rows}
+  </select>
+
+  <select id="countPlace" resultType="java.lang.Integer">
+    SELECT count(1)
+    FROM  tb_place i
+    <include refid="Where_Clause"/>
+  </select>
+
+  <select id="delete" resultType="Integer" >
+    DELETE  FROM  tb_place
+    <choose>
+    <when test="list !=null">
+      WHERE id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        ${item}
+      </foreach>
+    </when>
+      <otherwise>
+        WHERE id =-1
+      </otherwise>
+    </choose>
+  </select>
+</mapper>

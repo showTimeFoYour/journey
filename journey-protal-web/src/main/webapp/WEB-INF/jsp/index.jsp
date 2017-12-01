@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +77,13 @@
                     <!-- 社区下拉面板 end -->
                 </li>
                 <li class="head-nav-app" data-cs-p="app"><a href="http://www.mafengwo.cn/app/intro/gonglve.php" title="APP">APP</a></li>
-                <a href="login">去登录</a>&nbsp;<a href="register">去注册</a>
+             <c:choose>
+                 <c:when test="${!empty sessionUser}">
+                     <a href="myinfo">${sessionUser.username}</a>
+                 </c:when>
+                 <c:otherwise> <a href="login">登录</a>&nbsp;<a href="register">去注册</a></c:otherwise>
+             </c:choose>
+
             </ul>
             <div class="head-search" data-online="1">
                 <div class="head-search-wrapper">
@@ -239,30 +245,30 @@
                     <li class="tab-selected" data-index="0"><i></i>全部</li>
                     <li data-index="1"><i></i>酒店</li>
                     <li data-index="2"><i></i>目的地</li>
-                    <li data-index="3"><i></i>自由行商城</li>
+
                 </ul>
             </div>
             <!-- 全部 begin -->
             <div class="searchbar" id="_j_index_search_bar_all">
                 <div class="search-wrapper">
                     <div class="search-input">
-                        <input name="q" type="text" placeholder="搜目的地/攻略/酒店/旅行特价" id="_j_index_search_input_all" autocomplete="off">
+                        <input name="keyword" type="text" placeholder="搜目的地/攻略/酒店/旅行特价" id="_j_index_search_input_all" autocomplete="off">
                     </div>
                 </div>
-                <div class="search-button" id="_j_index_search_btn_all">
-                    <a role="button" href="javascript:"><i class="icon-search"></i></a>
+                <div class="search-button" >
+                    <a role="button" id="index_search_btn_all"><i class="icon-search"></i></a>
                 </div>
             </div>
             <!-- 全部 end -->
             <!-- 酒店 begin -->
             <div class="searchbar searchbar-hotel hide" id="_j_index_search_bar_hotel">
                 <div class="search-wrapper">
-                    <form action="/hotel/s.php" method="get">
+                    <form action="#" method="get" id="hotel_form" >
                         <div class="search-input">
                             <input name="keyword" type="text" placeholder="请输入国家、地区、城市名称" id="_j_index_search_input_hotel" autocomplete="off">
                         </div>
                     </form>
-                    <div class="search-date" id="_j_check_in">
+                  <div class="search-date" id="_j_check_in">
                         <input type="text" readonly="readonly">
                         <span></span>
                         <i class="icon-cal"></i>
@@ -273,26 +279,26 @@
                         <i class="icon-cal"></i>
                     </div>
                 </div>
-                <div class="search-button" id="_j_index_search_btn_hotel">
-                    <a role="button" href="javascript:"><i class="icon-search"></i></a>
+                <div class="search-button" >
+                    <a role="button" id="index_search_btn_hotel"><i class="icon-search"></i></a>
                 </div>
             </div>
             <!-- 酒店 end -->
             <!-- 目的地 begin -->
             <div class="searchbar hide" id="_j_index_search_bar_mdd">
-                <form action="/search/s.php" method="get">
+                <form action="#" method="get" >
                     <div class="search-wrapper">
                         <div class="search-input">
-                            <input name="q" type="text" placeholder="我要去..."  id="_j_index_search_input_mdd" autocomplete="off">
+                            <input name="q" type="text" placeholder="我要去..."  id="index_search_input_mdd" autocomplete="off">
                         </div>
                     </div>
-                    <div class="search-button" id="_j_index_search_btn_mdd">
-                        <a role="button" href="javascript:"><i class="icon-search"></i></a>
+                    <div class="search-button" >
+                        <a role="button" id="index_search_btn_mdd" ><i class="icon-search"></i></a>
                     </div>
                 </form>
             </div>
             <!-- 目的地 end -->
-            <!-- 出行服务 begin -->
+           <%-- <!-- 出行服务 begin -->
             <div class="searchbar hide" id="_j_index_search_bar_sales">
                 <div class="search-wrapper">
                     <div class="search-input">
@@ -303,7 +309,7 @@
                     <a role="button" href="javascript:"><i class="icon-search"></i></a>
                 </div>
             </div>
-            <!-- 出行服务 end -->
+            <!-- 出行服务 end -->--%>
             <!-- 目的地suggest begin -->
             <div class="search-suggest-panel search-suggest-place hide" id="_j_index_suggest_list_mdd">
                 <ul class="suggest-list"></ul>
@@ -850,6 +856,22 @@
         M.loadResource("http://js.mafengwo.net/js/cv/js+Dropdown:js+pageletcommon+pageHeadUserInfoWWWNormal:js+jquery.tmpl:js+M+module+InputListener:js+M+module+SuggestionXHR:js+M+module+DropList:js+M+module+Suggestion:js+M+module+MesSearchEvent:js+SiteSearch:js+AHeader:js+jquery.lazyload:js+M+module+Pagination:js+index+ControllerRecommend:js+M+module+Slider:js+jquery.mousewheel.min:js+M+module+ScrollBar:js+xdate:js+hotel+module+FestivalDateConfig:js+jquery-ui-core:js+jquery-ui-datepicker:js+hotel+module+DateRangePicker:js+M+module+Storage:js+hotel+module+ModuleProvider:js+hotel+module+BookingDate:js+hotel+module+Log:js+hotel+module+Search_v2:js+M+module+dialog+Layer:js+M+module+dialog+DialogBase:js+M+module+dialog+Dialog:js+AIndex:js+module+app+Page:js+M+module+Toggle:js+index+AGinfoSearch:im+js+client+ImEventEntity:im+js+client+ImService:js+M+module+PageAdmin:js+M+module+Cookie:js+M+module+ResourceKeeper:js+jquery.jgrowl.min:js+AMessage:js+M+module+FrequencyVerifyControl:js+M+module+FrequencySystemVerify:js+ALogin:js+M+module+ScrollObserver:js+M+module+QRCode:js+AToolbar:js+ACnzzGaLog:js+ARecruit:js+ALazyLoad^YlVURw^1506283324.js");
     }
 </script>
+<script>
+    $("#index_search_btn_hotel").click(function () {
+        var hotel_name= $("#_j_index_search_input_hotel").val();
+        alert(hotel_name);
 
+    });
+    $("#index_search_btn_all").click(function () {
+        var all_name= $("#_j_index_search_input_all").val();
+alert(all_name);
+    });
+    $("#index_search_btn_mdd").click(function () {
+        var arride_name= $("#index_search_input_mdd").val();
+        alert(arride_name);
+    })
+
+
+</script>
 </body>
 </html>
