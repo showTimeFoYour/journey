@@ -79,7 +79,7 @@
                 <li class="head-nav-app" data-cs-p="app"><a href="http://www.mafengwo.cn/app/intro/gonglve.php" title="APP">APP</a></li>
              <c:choose>
                  <c:when test="${!empty sessionUser}">
-                     <a href="myinfo">${sessionUser.username}</a>
+                     <a href="user-info">${sessionUser.username}</a>
                  </c:when>
                  <c:otherwise> <a href="login">登录</a>&nbsp;<a href="register">去注册</a></c:otherwise>
              </c:choose>
@@ -856,16 +856,30 @@
         M.loadResource("http://js.mafengwo.net/js/cv/js+Dropdown:js+pageletcommon+pageHeadUserInfoWWWNormal:js+jquery.tmpl:js+M+module+InputListener:js+M+module+SuggestionXHR:js+M+module+DropList:js+M+module+Suggestion:js+M+module+MesSearchEvent:js+SiteSearch:js+AHeader:js+jquery.lazyload:js+M+module+Pagination:js+index+ControllerRecommend:js+M+module+Slider:js+jquery.mousewheel.min:js+M+module+ScrollBar:js+xdate:js+hotel+module+FestivalDateConfig:js+jquery-ui-core:js+jquery-ui-datepicker:js+hotel+module+DateRangePicker:js+M+module+Storage:js+hotel+module+ModuleProvider:js+hotel+module+BookingDate:js+hotel+module+Log:js+hotel+module+Search_v2:js+M+module+dialog+Layer:js+M+module+dialog+DialogBase:js+M+module+dialog+Dialog:js+AIndex:js+module+app+Page:js+M+module+Toggle:js+index+AGinfoSearch:im+js+client+ImEventEntity:im+js+client+ImService:js+M+module+PageAdmin:js+M+module+Cookie:js+M+module+ResourceKeeper:js+jquery.jgrowl.min:js+AMessage:js+M+module+FrequencyVerifyControl:js+M+module+FrequencySystemVerify:js+ALogin:js+M+module+ScrollObserver:js+M+module+QRCode:js+AToolbar:js+ACnzzGaLog:js+ARecruit:js+ALazyLoad^YlVURw^1506283324.js");
     }
 </script>
+
 <script>
+    /*
+    * 酒店搜索
+    *
+    * */
     $("#index_search_btn_hotel").click(function () {
         var hotel_name= $("#_j_index_search_input_hotel").val();
         alert(hotel_name);
 
     });
+    /*
+    * 全部搜索（酒店及目的地）
+    *
+    * */
+
     $("#index_search_btn_all").click(function () {
         var all_name= $("#_j_index_search_input_all").val();
 alert(all_name);
     });
+    /*
+   *目的地搜索
+   *
+   * */
     $("#index_search_btn_mdd").click(function () {
         var arride_name= $("#index_search_input_mdd").val();
         alert(arride_name);
