@@ -21,6 +21,19 @@ public class SearchIndexAction {
         return "search";
     }
 
+    @RequestMapping("/search-all")
+    public String toSearchAll()
+    {
+
+        return "search-all";
+    }
+    @RequestMapping("/search-hotel")
+    public String toSearchHotel()
+    {
+
+        return "search-hotel";
+    }
+
     @RequestMapping("/search")
     public  String  searchHotelList(String keyword,
                                     @RequestParam(defaultValue = "1") Integer page, Model model) throws Exception {
