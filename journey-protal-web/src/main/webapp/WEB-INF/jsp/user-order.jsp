@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +31,7 @@
 
 <div class="topBar">
     <div class="topBarC">
-        <div class="logo"><a title="蚂蜂窝自由行" href="/">蚂蜂窝自由行</a></div>
+        <div class="logo"><a title="蚂蜂窝自由行" href="http://localhost:8081/journey/">蚂蜂窝自由行</a></div>
         <div class="t_nav">
             <ul id="pnl_nav" data-cs-t="headnav_wo">
                 <li data-cs-p="index">
@@ -158,38 +160,39 @@
                     <th class="td-info">订单信息</th>
                     <th class="td-type">类型</th>
                     <th class="td-date">行程日期</th>
-                    <th class="td-cost">支付金额</th>
+                    <th class="td-cost">支付金额(RMB)</th>
                     <th class="td-status">订单状态</th>
                     <th class="td-operate">操作</th>
                 </tr>
                 </tbody>
             </table>
+            <c:forEach items="${itemList}" var ="item" >
             <div class="order-bd">
                 <table data-id="2118847201711285287243" data-type="sales" class="order-item">
                     <caption>
                 <span class="num">订单号：  ${item.id}
                     </span>
                         </span>
-                        <span class="time">下单时间：${item.created}</span>
+                        <span class="time">下单时间： <s:formatDate value="${item.created}"></s:formatDate>  </span>
 
                         <span class="telphone">联系电话：4006588799转1589</span>
                     </caption>
                     <tbody>
                     <tr>
                         <td class="td-info">
-                            <a class="pro-img" href="http://www.mafengwo.cn/item/${item.id}.html" target="_blank">
+                            <a class="pro-img" href="#" target="_blank">
                                 <img
-                                        src="${item.images}"
+                                        src="http://119.23.223.202/images/7.jpg"
                                 >
                             </a>
                             <div class="pro-detail">
                                 <p class="title" title="${item.title}"><a href="http://www.mafengwo.cn/item/${item.id}.html" target="_blank">${item.title}</a></p>
-                                <p class="sub" title="${item.title}${item.created}">${item.title}${item.created}</p>
+                                <p class="sub" title="${item.title} ">${item.title}${item.sellPoint} </p>
                             </div>
                         </td>
-                        <td class="td-type">${item.status}</td>
+                        <td class="td-type">${item.statusType}</td>
                         <td class="td-date">
-                            <p>出行日期：${item.created}</p>
+                            <p>出行日期：<s:formatDate value="${item.start}"></s:formatDate>  </p>
                         </td>
                         <td class="td-cost">
                             <strong>${item.price}</strong>                                    </td>
@@ -197,47 +200,27 @@
                             <p
                                     class="s4"
                             >
-                                ${item.status}
+                                <c:if test="${item.status == 0}">
+                                    未支付
+                                </c:if>
+                                <c:if test="${item.status == 1}">
+                                    已支付
+                                </c:if>
+
+
                             </p>
                         </td>
                         <td class="td-operate">
-                            <a
-                                    class="btn"
-                                    href="https://payitf.mafengwo.cn/order/pay_v2/gopay?order_id=51171128003906803&_refer=list" target="_blank">
-                                去支付
-                            </a>
+                            <a     class="btn"
+                                    onclick="confirmItem(${item.id},${item.status})">  确认支付 </a>
 
-                            <a
-                                    data-japp="client"
-                                    data-jappconf="webim"
-                                    data-webim-type="2"
-                                    data-webim-orderid="2118847201711285287243"
 
-                                    data-track="_refer=list"
-                                    href="javascript:void(0);"
 
-                                    class="btn"
-                            >
-                                联系客服
-                            </a>
-
-                            <a
-                                    data-japp="order_cancel"
-                                    data-jappconf="order"
-                                    data-order_id="2118847201711285287243"
-                                    data-busi_type="sales"
-
-                                    data-track="_refer=list"
-                                    href="javascript:void(0);"
-
-                            >
+                            <a   class="btn"
+                                    onclick="cacelItem(${item.id},${item.status})">
                                 取消订单
                             </a>
 
-                            <a
-                                    href="http://www.mafengwo.cn/order_center/index/view_order?order_id=2118847201711285287243&amp;busi_type=sales&_refer=list" target="_blank">
-                                查看订单
-                            </a>
 
                         </td>
                     </tr>
@@ -245,6 +228,74 @@
                 </table>
 
             </div>
+            </c:forEach>
+
+
+            <script>
+             function cacelItem(id,status) {
+
+                 var itemId = id;
+                var flag = confirm("确认取消订单?");
+                if(flag)
+                {
+                    $.post(
+                    "${pageContext.request.contextPath}/item/cacelItemById",
+                    {"itemId":itemId},
+                    function(data)
+                    {
+                        if(data =="ok")
+                        {
+                            window.location.href="http://localhost:8081/journey/item/user-order";
+                        }
+                        else
+                        {
+                            alert("取消订单失败");
+                        }
+
+                    },
+                    "json"
+                )
+
+                }
+
+             }
+
+             function confirmItem(id,status)
+             {
+
+                 var itemId = id;
+                 //判读订单是否已经支付
+                 var test =status;
+                 if(test == 1)
+                 {
+                     alert("订单已经支付");
+                     return  false;
+                 }
+                 var flag = confirm("确认支付订单?");
+                 if(flag)
+                 {
+                     $.post(
+                         "${pageContext.request.contextPath}/item/confirmById",
+                         {"itemId":itemId},
+                         function(data)
+                         {
+
+                             if(data =="ok")
+                             {
+                                 window.location.href="http://localhost:8081/journey/item/user-order";
+                             }
+                         },
+                         "json"
+                     )
+                 }
+
+             }
+
+
+            </script>
+
+
+
             <div data-pagelet id="_j_joinlist_pagination" class="" data-api=":pageletcommon:paginationApi" data-params="{&quot;total&quot;:&quot;3&quot;,&quot;size&quot;:&quot;10&quot;,&quot;currpage&quot;:&quot;1&quot;,&quot;index_num&quot;:10,&quot;tmpl&quot;:&quot;pagination.tpl&quot;,&quot;status&quot;:&quot;0&quot;,&quot;page_item_class&quot;:&quot;_j_pageitem&quot;}" data-controller="/js/pageletcommon/ControllerPagination" data-controller_data="{&quot;page_item_class&quot;:&quot;_j_pageitem&quot;}"></div>
             <div class="notes simsun">
                 <p>由于预订时忘记登录蚂蜂窝而没能记录到的订单，您可以在蚂蜂窝合作伙伴的网站查询，入口：</p>
@@ -279,7 +330,9 @@
             pageName: '我的订单-待点评'
         });
     }
+    
 </script>
+
 
 
 

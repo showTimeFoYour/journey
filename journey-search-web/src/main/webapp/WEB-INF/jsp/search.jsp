@@ -59,7 +59,6 @@
 										style="display: inline" />
 									</a>
 								</div>
-
 								<div class="title-a">
 									<a class="trackref presaleSign_225865"
 										href="http://localhost:8086/item/${item.id}.html"

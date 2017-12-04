@@ -4,7 +4,11 @@
 
   <sql id="Base_Column_List" >
     i.id, i.title, i.price,i.status,  i.num, i.start, i.created, i.finished, i.hotel_id as hotelId, i.place_id as placeId,
-    i.user_id as userId ,u.realname as userName,
+    i.user_id as userId ,u.realname as userName,c.sell_piont as sellPoint,
+    CASE c.status
+              WHEN  0 THEN  "景点"
+              WHEN  1 THEN  "酒店"
+              ELSE  "未知" END  as statusType,
     CASE i.status
               WHEN  0 THEN  "未下单"
               WHEN  1 THEN  "已下单"
@@ -41,6 +45,8 @@
     from tb_item i
     left join  tb_user u
     on i.user_id  = u.id
+    left join  tb_hotel c
+    on c.id = i.hotel_id
     <include refid="Where_Clause"/>
     limit #{page.offset},#{page.rows}
   </select>
@@ -53,8 +59,21 @@
     <include refid="Blob_Column_List" />
     from tb_item i
     left join  tb_user u   on i.user_id  = u.id
+    left join  tb_hotel c   on c.id = i.hotel_id
     WHERE  i.id = #{id}
 
+  </select>
+
+  <select id="listItemsById"   resultType="com.journey.abc.pojo.vo.TbItemCustom" parameterType="java.lang.Long">
+
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_item i
+    left join  tb_user u   on i.user_id  = u.id
+    left join  tb_hotel c   on c.id = i.hotel_id
+    WHERE    i.user_id = #{userId} and i.status != 3
   </select>
 
 

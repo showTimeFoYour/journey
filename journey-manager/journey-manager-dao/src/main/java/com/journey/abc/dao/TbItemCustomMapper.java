@@ -19,4 +19,5 @@ public interface TbItemCustomMapper {
     TbItemCustom selectItemByid(Long id);
 
 
+    List<TbItemCustom> listItemsById(Long userId);
 }

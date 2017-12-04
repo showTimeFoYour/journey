@@ -205,4 +205,23 @@ public class ItemServiceImpl implements ItemService {
         }
          return i;
     }
+
+
+    @Override
+    public List<TbItemCustom> listItemsByUserId(Long userId) {
+
+        List<TbItemCustom> list = null;
+
+        try {
+             list = itemCustomDao.listItemsById(userId);
+
+        }catch (Exception e)
+        {
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return  list;
+
+
+    }
 }

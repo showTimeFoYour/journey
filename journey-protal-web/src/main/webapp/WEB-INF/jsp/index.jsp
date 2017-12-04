@@ -27,7 +27,7 @@
 <div id="header" xmlns="http://www.w3.org/1999/html">
     <div class="mfw-header">
         <div class="header-wrap clearfix">
-            <div class="head-logo"><a class="mfw-logo" title="蚂蜂窝自由行" href="http://www.mafengwo.cn/"></a></div>
+            <div class="head-logo"><a class="mfw-logo" title="蚂蜂窝自由行" href="http://localhost:8081/journey/"></a></div>
             <ul class="head-nav" data-cs-t="headnav" id="_j_head_nav">
                 <li class="head-nav-index" data-cs-p="index"><a href="http://www.mafengwo.cn/">首页</a></li>
                 <li class="head-nav-place" data-cs-p="mdd"><a href="http://www.mafengwo.cn/mdd/" title="目的地">目的地</a></li>
@@ -250,6 +250,7 @@
             </div>
             <!-- 全部 begin -->
             <div class="searchbar" id="_j_index_search_bar_all">
+                <form action="#" method="post" id="all">
                 <div class="search-wrapper">
                     <div class="search-input">
                         <input name="keyword" type="text" placeholder="搜目的地/攻略/酒店/旅行特价" id="_j_index_search_input_all" autocomplete="off">
@@ -258,12 +259,13 @@
                 <div class="search-button" >
                     <a role="button" id="index_search_btn_all"><i class="icon-search"></i></a>
                 </div>
+                </form>
             </div>
             <!-- 全部 end -->
             <!-- 酒店 begin -->
             <div class="searchbar searchbar-hotel hide" id="_j_index_search_bar_hotel">
                 <div class="search-wrapper">
-                    <form action="#" method="get" id="hotel_form" >
+                    <form  >
                         <div class="search-input">
                             <input name="keyword" type="text" placeholder="请输入国家、地区、城市名称" id="_j_index_search_input_hotel" autocomplete="off">
                         </div>
@@ -329,7 +331,7 @@
             <div class="bd">
                 <ul class="clearfix">
                     <li class="item item-qiang">
-                        <a href="http://www.mafengwo.cn/sales/2224273.html" target="_blank">
+                        <a href="${pageContext.request.contextPath}/part2" target="_blank">
                             <div class="image">
                                 <img src="https://c3-q.mafengwo.net/s10/M00/A2/72/wKgBZ1mw7omASPxWAAM8MIy2vKo80.jpeg?imageMogr2%2Fthumbnail%2F%21440x270r%2Fgravity%2FCenter%2Fcrop%2F%21440x270%2Fquality%2F90" height="135" width="220">
                                 <span class="discount"><b>直降1111</b></span>
@@ -343,7 +345,7 @@
                         </a>
                     </li>
                     <li class="item item-qiang">
-                        <a href="http://www.mafengwo.cn/sales/2318259.html" target="_blank">
+                        <a href="${pageContext.request.contextPath}/part1" target="_blank">
                             <div class="image">
                                 <img src="https://p2-q.mafengwo.net/s10/M00/3B/02/wKgBZ1n5icGAZsw-AAJ3aC_a9Xw22.jpeg?imageMogr2%2Fthumbnail%2F%21440x270r%2Fgravity%2FCenter%2Fcrop%2F%21440x270%2Fquality%2F90" height="135" width="220">
                                 <span class="discount"><b>直降1400</b></span>
@@ -357,7 +359,7 @@
                         </a>
                     </li>
                     <li class="item ">
-                        <a href="http://www.mafengwo.cn/sales/328623.html" target="_blank">
+                        <a href="${pageContext.request.contextPath}/part3" target="_blank">
                             <div class="image">
                                 <img src="https://n1-q.mafengwo.net/s10/M00/37/64/wKgBZ1kepBCAQL90AAD3JUy1SDI42.jpeg?imageMogr2%2Fthumbnail%2F%21440x270r%2Fgravity%2FCenter%2Fcrop%2F%21440x270%2Fquality%2F90" height="135" width="220">
                             </div>
@@ -864,8 +866,15 @@
     * */
     $("#index_search_btn_hotel").click(function () {
         var hotel_name= $("#_j_index_search_input_hotel").val();
-        alert(hotel_name);
-
+        $.post(
+            "toSearch",
+            {name:hotel_name},
+            function(data){
+                console.log(data)
+                window.location.href = "http://localhost:8082/journey/";
+            },
+            "json"
+        )
     });
     /*
     * 全部搜索（酒店及目的地）
@@ -874,7 +883,15 @@
 
     $("#index_search_btn_all").click(function () {
         var all_name= $("#_j_index_search_input_all").val();
-alert(all_name);
+        $.post(
+            "toSearch",
+            {name:all_name},
+            function(data){
+                console.log(data)
+                window.location.href = "http://localhost:8082/journey/";
+            },
+            "json"
+        )
     });
     /*
    *目的地搜索
@@ -882,7 +899,17 @@ alert(all_name);
    * */
     $("#index_search_btn_mdd").click(function () {
         var arride_name= $("#index_search_input_mdd").val();
-        alert(arride_name);
+        $.post(
+            "toSearch",
+            {name:arride_name},
+            function(data){
+                console.log(data)
+                //跳转到搜索界面
+                window.location.href = "http://localhost:8082/journey/";
+            },
+            "json"
+        )
+
     })
 
 

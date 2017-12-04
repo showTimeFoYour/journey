@@ -29,7 +29,7 @@
 
 <div class="topBar">
     <div class="topBarC">
-        <div class="logo"><a title="蚂蜂窝自由行" href="/">蚂蜂窝自由行</a></div>
+        <div class="logo"><a title="蚂蜂窝自由行" href="http://localhost:8081/journey/">蚂蜂窝自由行</a></div>
         <div class="t_nav">
             <ul id="pnl_nav" data-cs-t="headnav_wo">
                 <li data-cs-p="index">
@@ -149,7 +149,7 @@
                 <ul class="flt2">
                     <li class="on"><a class="tags_link" href="/u/68417719.html" title="我的窝">我的窝</a></li>
                     <li><a class="tags_link" href="/u/68417719/note.html" title="我的游记">我的游记</a></li>
-                    <li><a class="tags_link" href="user-order" title="我的订单">我的订单</a></li>
+                    <li><a class="tags_link" href="item/user-order" title="我的订单" >我的订单</a></li>
                     <li id="_j_pathnav"><a class="tags_link" href="/path/68417719.html" title="我的足迹">我的足迹</a></li>
                     <li><a class="tags_link" href="/u/68417719/review.html" title="我的点评">我的点评</a></li>
                     <li><a class="tags_link" href="/u/68417719/together.html" title="我的结伴">我的结伴</a></li>
@@ -158,6 +158,14 @@
         </div>
 
     </div>
+
+    <!-- 先导入jquery的包 -->
+    <script src="js/jquery-easyui-1.5/jquery.min.js"></script>
+    <!-- jquery easyui -->
+    <script src="js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+
+
+
     <style>
         .flow_path_maps{
             overflow:hidden;

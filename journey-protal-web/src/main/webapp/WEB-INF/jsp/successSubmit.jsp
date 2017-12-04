@@ -20,12 +20,9 @@
       alert("提交订单成功");
       if(confirm("确认跳转"))
       {
-         location.href="${pageContext.request.contextPath}/pay";
+         location.href="${pageContext.request.contextPath}/user-info";
       }
-
     })
-
-
 </script>
 </body>
 </html>

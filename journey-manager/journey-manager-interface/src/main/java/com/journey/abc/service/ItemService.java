@@ -35,4 +35,7 @@ public interface ItemService {
     int updateItemById(TbItem item);
      //添加订单
     int saveItems(TbItem tbItem);
+
+    //查询订单
+    List<TbItemCustom> listItemsByUserId(Long userId);
 }
